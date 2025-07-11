@@ -3,33 +3,3234 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Churrasquinho da Hora - Os melhores espetinhos e porções da região">
-    <meta name="theme-color" content="#D32F2F">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Churrasquinho">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=yes">
-    <meta name="msapplication-TileColor" content="#D32F2F">
-    <meta name="msapplication-tap-highlight" content="no">
-
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
-
-    <!-- Apple Touch Icons -->
-    <link rel="apple-touch-icon" href="https://via.placeholder.com/180x180?text=🍖">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://via.placeholder.com/152x152?text=🍖">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://via.placeholder.com/180x180?text=🍖">
-    <link rel="apple-touch-icon" sizes="167x167" href="https://via.placeholder.com/167x167?text=🍖">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="https://via.placeholder.com/32x32?text=🍖">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://via.placeholder.com/16x16?text=🍖">
-
     <title>Churrasquinho da Hora | Espetinhos Gourmet</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="index.css">
+    <style>
+        /* CSS Reset e Variáveis */
+        :root {
+            --primary: #D32F2F;
+            --primary-dark: #B71C1C;
+            --primary-light: #FF6659;
+            --secondary: #FFA000;
+            --secondary-dark: #FF6F00;
+            --dark: #212121;
+            --light: #FAFAFA;
+            --gray: #757575;
+            --gray-light: #E0E0E0;
+            --success: #388E3C;
+            --font-main: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Tipografia */
+        h1,
+        h2,
+        h3,
+        h4 {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-down i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        /* Menu Section */
+        .menu {
+            background-color: var(--light);
+        }
+
+        .menu-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            background-color: white;
+            border: 1px solid var(--gray-light);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .menu-item-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .menu-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .menu-item:hover .menu-item-img img {
+            transform: scale(1.1);
+        }
+
+        .menu-item-content {
+            padding: 1.5rem;
+        }
+
+        .menu-item-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-title h3 {
+            color: var(--dark);
+        }
+
+        .menu-item-price {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .menu-item-desc {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .menu-item-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--success);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: white;
+            overflow: hidden;
+        }
+
+        /* Premium Carousel Styles */
+        .carousel-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2px;
+        }
+
+        .carousel-track {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            min-height: 500px;
+            overflow: hidden;
+            border-radius: 18px;
+            background: #000;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform: translateX(100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .carousel-slide.prev {
+            transform: translateX(-100%);
+        }
+
+        .carousel-slide.next {
+            transform: translateX(100%);
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+
+        .slide-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 3rem 2rem 2rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .carousel-slide.active .slide-info {
+            transform: translateY(0);
+        }
+
+        .slide-info h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-info p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+        }
+
+        /* Navigation Buttons */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-nav:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-nav.prev {
+            left: 20px;
+        }
+
+        .carousel-nav.next {
+            right: 20px;
+        }
+
+        .carousel-nav i {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        /* Indicators */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .indicator:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* Slide Indicator */
+        .carousel-slide-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Progress Bar */
+        .carousel-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: var(--primary);
+            z-index: 10;
+            transition: width 0.3s ease;
+            border-radius: 0 0 18px 18px;
+        }
+
+        /* Thumbnails */
+        .carousel-thumbnails {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .carousel-thumbnail {
+            width: 80px;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            position: relative;
+        }
+
+        .carousel-thumbnail:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-thumbnail.active {
+            border-color: var(--primary);
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);
+        }
+
+        .carousel-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-thumbnail:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Modal */
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            backdrop-filter: blur(10px);
+        }
+
+        .image-modal.active {
+            display: flex;
+        }
+
+        .image-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: white;
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: var(--transition);
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .carousel-track {
+                height: 40vh;
+                min-height: 300px;
+            }
+
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+            }
+
+            .carousel-nav.prev {
+                left: 10px;
+            }
+
+            .carousel-nav.next {
+                right: 10px;
+            }
+
+            .carousel-nav i {
+                font-size: 1rem;
+            }
+
+            .slide-info {
+                padding: 2rem 1rem 1rem;
+            }
+
+            .slide-info h3 {
+                font-size: 1.5rem;
+            }
+
+            .slide-info p {
+                font-size: 1rem;
+            }
+
+            .carousel-thumbnail {
+                width: 60px;
+                height: 45px;
+            }
+
+            .carousel-thumbnails {
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            .carousel-slide-indicator {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-track {
+                height: 35vh;
+                min-height: 250px;
+            }
+
+            .carousel-thumbnails {
+                display: none;
+            }
+
+            .slide-info h3 {
+                font-size: 1.2rem;
+            }
+
+            .slide-info p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animation Keyframes */
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Hover Effects */
+        .carousel-container:hover .carousel-nav {
+            opacity: 1;
+        }
+
+        .carousel-nav {
+            opacity: 0.7;
+        }
+
+        /* Loading Animation */
+        .carousel-slide.loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Gallery Item Improvements */
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(211, 47, 47, 0.8), rgba(255, 160, 0, 0.8));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: white;
+            font-size: 2.5rem;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay i {
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-newsletter p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-family: inherit;
+        }
+
+        .newsletter-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        /* Acessibilidade */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            z-index: 1001;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: var(--transition);
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .carousel-track {
+                height: 40vh;
+                min-height: 300px;
+            }
+
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+            }
+
+            .carousel-nav.prev {
+                left: 10px;
+            }
+
+            .carousel-nav.next {
+                right: 10px;
+            }
+
+            .carousel-nav i {
+                font-size: 1rem;
+            }
+
+            .slide-info {
+                padding: 2rem 1rem 1rem;
+            }
+
+            .slide-info h3 {
+                font-size: 1.5rem;
+            }
+
+            .slide-info p {
+                font-size: 1rem;
+            }
+
+            .carousel-thumbnail {
+                width: 60px;
+                height: 45px;
+            }
+
+            .carousel-thumbnails {
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            .carousel-slide-indicator {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-track {
+                height: 35vh;
+                min-height: 250px;
+            }
+
+            .carousel-thumbnails {
+                display: none;
+            }
+
+            .slide-info h3 {
+                font-size: 1.2rem;
+            }
+
+            .slide-info p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animation Keyframes */
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Hover Effects */
+        .carousel-container:hover .carousel-nav {
+            opacity: 1;
+        }
+
+        .carousel-nav {
+            opacity: 0.7;
+        }
+
+        /* Loading Animation */
+        .carousel-slide.loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Gallery Item Improvements */
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(211, 47, 47, 0.8), rgba(255, 160, 0, 0.8));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: white;
+            font-size: 2.5rem;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay i {
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-newsletter p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-family: inherit;
+        }
+
+        .newsletter-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        /* Acessibilidade */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            z-index: 1001;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: var(--transition);
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .carousel-track {
+                height: 40vh;
+                min-height: 300px;
+            }
+
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+            }
+
+            .carousel-nav.prev {
+                left: 10px;
+            }
+
+            .carousel-nav.next {
+                right: 10px;
+            }
+
+            .carousel-nav i {
+                font-size: 1rem;
+            }
+
+            .slide-info {
+                padding: 2rem 1rem 1rem;
+            }
+
+            .slide-info h3 {
+                font-size: 1.5rem;
+            }
+
+            .slide-info p {
+                font-size: 1rem;
+            }
+
+            .carousel-thumbnail {
+                width: 60px;
+                height: 45px;
+            }
+
+            .carousel-thumbnails {
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            .carousel-slide-indicator {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-track {
+                height: 35vh;
+                min-height: 250px;
+            }
+
+            .carousel-thumbnails {
+                display: none;
+            }
+
+            .slide-info h3 {
+                font-size: 1.2rem;
+            }
+
+            .slide-info p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animation Keyframes */
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Hover Effects */
+        .carousel-container:hover .carousel-nav {
+            opacity: 1;
+        }
+
+        .carousel-nav {
+            opacity: 0.7;
+        }
+
+        /* Loading Animation */
+        .carousel-slide.loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Gallery Item Improvements */
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(211, 47, 47, 0.8), rgba(255, 160, 0, 0.8));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: white;
+            font-size: 2.5rem;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay i {
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-newsletter p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-family: inherit;
+        }
+
+        .newsletter-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        /* Acessibilidade */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            z-index: 1001;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: var(--transition);
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .carousel-track {
+                height: 40vh;
+                min-height: 300px;
+            }
+
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+            }
+
+            .carousel-nav.prev {
+                left: 10px;
+            }
+
+            .carousel-nav.next {
+                right: 10px;
+            }
+
+            .carousel-nav i {
+                font-size: 1rem;
+            }
+
+            .slide-info {
+                padding: 2rem 1rem 1rem;
+            }
+
+            .slide-info h3 {
+                font-size: 1.5rem;
+            }
+
+            .slide-info p {
+                font-size: 1rem;
+            }
+
+            .carousel-thumbnail {
+                width: 60px;
+                height: 45px;
+            }
+
+            .carousel-thumbnails {
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            .carousel-slide-indicator {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-track {
+                height: 35vh;
+                min-height: 250px;
+            }
+
+            .carousel-thumbnails {
+                display: none;
+            }
+
+            .slide-info h3 {
+                font-size: 1.2rem;
+            }
+
+            .slide-info p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animation Keyframes */
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Hover Effects */
+        .carousel-container:hover .carousel-nav {
+            opacity: 1;
+        }
+
+        .carousel-nav {
+            opacity: 0.7;
+        }
+
+        /* Loading Animation */
+        .carousel-slide.loading {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Gallery Item Improvements */
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(211, 47, 47, 0.8), rgba(255, 160, 0, 0.8));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: white;
+            font-size: 2.5rem;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay i {
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-newsletter p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-family: inherit;
+        }
+
+        .newsletter-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        /* Acessibilidade */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            z-index: 1001;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: var(--transition);
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .carousel-track {
+                height: 40vh;
+                min-height: 300px;
+            }
+
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+            }
+
+            .carousel-nav.prev {
+                left: 10px;
+            }
+
+            .carousel-nav.next {
+                right: 10px;
+            }
+
+            .carousel-nav i {
+                font-size: 1rem;
+            }
+
+            .slide-info {
+                padding: 2rem 1rem 1rem;
+            }
+
+            .slide-info h3 {
+                font-size: 1.5rem;
+            }
+
+            .slide-info p {
+                font-size: 1rem;
+            }
+
+            .carousel-thumbnail {
+                width: 60px;
+                height: 45px;
+            }
+
+            .carousel-thumbnails {
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            .carousel-slide-indicator {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-track {
+                height: 35vh;
+                min-height: 250px;
+            }
+
+            .carousel-thumbnails {
+                display: none;
+            }
+
+            .slide-info h3 {
+                font-size: 1.2rem;
+            }
+
+            .slide-info p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2px;
+        }
+
+        .carousel-track {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            min-height: 500px;
+            overflow: hidden;
+            border-radius: 18px;
+            background: #000;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform: translateX(100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .carousel-slide.prev {
+            transform: translateX(-100%);
+        }
+
+        .carousel-slide.next {
+            transform: translateX(100%);
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+
+        .slide-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 3rem 2rem 2rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .carousel-slide.active .slide-info {
+            transform: translateY(0);
+        }
+
+        .slide-info h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-info p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+        }
+
+        /* Navigation Buttons */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-nav:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-nav.prev {
+            left: 20px;
+        }
+
+        .carousel-nav.next {
+            right: 20px;
+        }
+
+        .carousel-nav i {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        /* Indicators */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .indicator:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* Slide Indicator */
+        .carousel-slide-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Progress Bar */
+        .carousel-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: var(--primary);
+            z-index: 10;
+            transition: width 0.3s ease;
+            border-radius: 0 0 18px 18px;
+        }
+
+        /* Thumbnails */
+        .carousel-thumbnails {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .carousel-thumbnail {
+            width: 80px;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            position: relative;
+        }
+
+        .carousel-thumbnail:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-thumbnail.active {
+            border-color: var(--primary);
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);
+        }
+
+        .carousel-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-thumbnail:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Modal */
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            backdrop-filter: blur(10px);
+        }
+
+        .image-modal.active {
+            display: flex;
+        }
+
+        .image-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: white;
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: var(--transition);
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .carousel-track {
+                height: 40vh;
+                min-height: 300px;
+            }
+
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+            }
+
+            .carousel-nav.prev {
+                left: 10px;
+            }
+
+            .carousel-nav.next {
+                right: 10px;
+            }
+
+            .carousel-nav i {
+                font-size: 1rem;
+            }
+
+            .slide-info {
+                padding: 2rem 1rem 1rem;
+            }
+
+            .slide-info h3 {
+                font-size: 1.5rem;
+            }
+
+            .slide-info p {
+                font-size: 1rem;
+            }
+
+            .carousel-thumbnail {
+                width: 60px;
+                height: 45px;
+            }
+
+            .carousel-thumbnails {
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            .carousel-slide-indicator {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-track {
+                height: 35vh;
+                min-height: 250px;
+            }
+
+            .carousel-thumbnails {
+                display: none;
+            }
+
+            .slide-info h3 {
+                font-size: 1.2rem;
+            }
+
+            .slide-info p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2px;
+        }
+
+        .carousel-track {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            min-height: 500px;
+            overflow: hidden;
+            border-radius: 18px;
+            background: #000;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform: translateX(100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .carousel-slide.prev {
+            transform: translateX(-100%);
+        }
+
+        .carousel-slide.next {
+            transform: translateX(100%);
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height:  100%;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+
+        .slide-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 3rem 2rem 2rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .carousel-slide.active .slide-info {
+            transform: translateY(0);
+        }
+
+        .slide-info h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-info p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+        }
+
+        /* Navigation Buttons */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-nav:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-nav.prev {
+            left: 20px;
+        }
+
+        .carousel-nav.next {
+            right: 20px;
+        }
+
+        .carousel-nav i {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        /* Indicators */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .indicator:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* Slide Indicator */
+        .carousel-slide-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Progress Bar */
+        .carousel-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: var(--primary);
+            z-index: 10;
+            transition: width 0.3s ease;
+            border-radius: 0 0 18px 18px;
+        }
+
+        /* Thumbnails */
+        .carousel-thumbnails {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .carousel-thumbnail {
+            width: 80px;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            position: relative;
+        }
+
+        .carousel-thumbnail:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-thumbnail.active {
+            border-color: var(--primary);
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);
+        }
+
+        .carousel-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-thumbnail:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Modal */
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            backdrop-filter: blur(10px);
+        }
+
+        .image-modal.active {
+            display: flex;
+        }
+
+        .image-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: white;
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: var(--transition);
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .carousel-track {
+                height: 40vh;
+                min-height: 300px;
+            }
+
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+            }
+
+            .carousel-nav.prev {
+                left: 10px;
+            }
+
+            .carousel-nav.next {
+                right: 10px;
+            }
+
+            .carousel-nav i {
+                font-size: 1rem;
+            }
+
+            .slide-info {
+                padding: 2rem 1rem 1rem;
+            }
+
+            .slide-info h3 {
+                font-size: 1.5rem;
+            }
+
+            .slide-info p {
+                font-size: 1rem;
+            }
+
+            .carousel-thumbnail {
+                width: 60px;
+                height: 45px;
+            }
+
+            .carousel-thumbnails {
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            .carousel-slide-indicator {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-track {
+                height: 35vh;
+                min-height: 250px;
+            }
+
+            .carousel-thumbnails {
+                display: none;
+            }
+
+            .slide-info h3 {
+                font-size: 1.2rem;
+            }
+
+            .slide-info p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -57,12 +3258,8 @@
                 <ul class="nav-links">
                     <li><a href="#home">Início</a></li>
                     <li><a href="#menu">Cardápio</a></li>
+                    <li><a href="#gallery">Galeria</a></li>
                 </ul>
-
-                <div class="cart-icon" id="cartIcon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count" id="cartCount">0</span>
-                </div>
             </nav>
         </div>
     </header>
@@ -75,6 +3272,7 @@
                 <p>Sabores autênticos preparados com ingredientes selecionados e muito carinho</p>
                 <div class="hero-btns">
                     <a href="#menu" class="btn btn-primary">Ver Cardápio</a>
+                    <a href="#gallery" class="btn btn-outline">Ver Galeria</a>
                 </div>
             </div>
         </div>
@@ -101,398 +3299,135 @@
 
             <div class="menu-grid">
                 <!-- Item 1 -->
-                <div class="menu-item" data-category="churrasquinho" role="article" aria-labelledby="item-1-title">
+                <div class="menu-item" data-category="churrasquinho">
                     <div class="menu-item-img">
                         <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                            alt="Delicioso espetinho de carne bovina grelhado na churrasqueira" loading="lazy">
-                        <div class="menu-item-badge">
-                            <i class="fas fa-fire"></i>
-                            Mais Pedido
-                        </div>
+                            alt="Espetinho de Carne">
                     </div>
                     <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <div class="menu-item-title">
-                                <div class="menu-item-category">
-                                    <i class="fas fa-drumstick-bite"></i>
-                                    Churrasquinho
-                                </div>
-                                <h3 id="item-1-title">Espetinho de Carne</h3>
-                            </div>
-                            <div class="menu-item-price" aria-label="Preço: R$ 8,90">
-                                R$ 8,90
-                            </div>
+                        <div class="menu-item-title">
+                            <h3>Espetinho de Carne</h3>
+                            <span class="menu-item-price">R$ 8,90</span>
                         </div>
-
-                        <div class="menu-item-rating">
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="rating-text">4.9 (127 avaliações)</span>
-                        </div>
-
                         <p class="menu-item-desc">Carne bovina de primeira qualidade, temperada com sal grosso e servida
-                            com farofa artesanal. Grelhado no ponto certo para garantir sabor e maciez.</p>
-
-                        <div class="menu-item-info">
-                            <span><i class="fas fa-clock"></i> 8-10 min</span>
-                            <span><i class="fas fa-users"></i> Serve 1 pessoa</span>
-                        </div>
-
-                        <button class="add-to-cart" data-name="Espetinho de Carne" data-price="8.90"
-                            data-image="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                            aria-label="Adicionar Espetinho de Carne ao carrinho por R$ 8,90">
-                            <i class="fas fa-shopping-cart"></i>
-                            Adicionar ao Carrinho
-                        </button>
+                            com farofa artesanal.</p>
+                        <button class="btn btn-secondary">Adicionar</button>
                     </div>
                 </div>
 
                 <!-- Item 2 -->
-                <div class="menu-item" data-category="churrasquinho" role="article" aria-labelledby="item-2-title">
+                <div class="menu-item" data-category="churrasquinho">
                     <div class="menu-item-img">
                         <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"
-                            alt="Suculento espetinho de frango marinado e grelhado" loading="lazy">
+                            alt="Espetinho de Frango">
                     </div>
                     <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <div class="menu-item-title">
-                                <div class="menu-item-category">
-                                    <i class="fas fa-drumstick-bite"></i>
-                                    Churrasquinho
-                                </div>
-                                <h3 id="item-2-title">Espetinho de Frango</h3>
-                            </div>
-                            <div class="menu-item-price" aria-label="Preço: R$ 7,90">
-                                R$ 7,90
-                            </div>
+                        <div class="menu-item-title">
+                            <h3>Espetinho de Frango</h3>
+                            <span class="menu-item-price">R$ 7,90</span>
                         </div>
-
-                        <div class="menu-item-rating">
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="rating-text">4.8 (94 avaliações)</span>
-                        </div>
-
-                        <p class="menu-item-desc">Peito de frango marinado em tempero especial por 24 horas e grelhado
-                            na hora. Carne macia e saborosa, perfeita para qualquer ocasião.</p>
-
-                        <div class="menu-item-info">
-                            <span><i class="fas fa-clock"></i> 6-8 min</span>
-                            <span><i class="fas fa-users"></i> Serve 1 pessoa</span>
-                        </div>
-
-                        <button class="add-to-cart" data-name="Espetinho de Frango" data-price="7.90"
-                            data-image="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"
-                            aria-label="Adicionar Espetinho de Frango ao carrinho por R$ 7,90">
-                            <i class="fas fa-shopping-cart"></i>
-                            Adicionar ao Carrinho
-                        </button>
+                        <p class="menu-item-desc">Peito de frango marinado em tempero especial e grelhado na hora.</p>
+                        <button class="btn btn-secondary">Adicionar</button>
                     </div>
                 </div>
 
                 <!-- Item 3 -->
-                <div class="menu-item" data-category="gourmet" role="article" aria-labelledby="item-3-title">
+                <div class="menu-item" data-category="gourmet">
                     <div class="menu-item-img">
                         <img src="https://images.unsplash.com/photo-1611270630250-5a9a8b7be1f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                            alt="Espetinho gourmet com filé mignon e vegetais nobres" loading="lazy">
-                        <div class="menu-item-badge">
-                            <i class="fas fa-star"></i>
-                            Novo
-                        </div>
+                            alt="Espetinho Gourmet">
                     </div>
                     <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <div class="menu-item-title">
-                                <div class="menu-item-category">
-                                    <i class="fas fa-crown"></i>
-                                    Gourmet
-                                </div>
-                                <h3 id="item-3-title">Espetinho Gourmet</h3>
-                            </div>
-                            <div class="menu-item-price" aria-label="Preço: R$ 12,90">
-                                R$ 12,90
-                            </div>
+                        <div class="menu-item-title">
+                            <h3>Espetinho Gourmet</h3>
+                            <span class="menu-item-price">R$ 12,90</span>
                         </div>
-
-                        <div class="menu-item-rating">
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="rating-text">4.9 (73 avaliações)</span>
-                        </div>
-
-                        <p class="menu-item-desc">Filé mignon premium, tomate cereja, cebola roxa e pimentão amarelo,
-                            finalizado com molho de ervas finas. Uma experiência gastronômica única.</p>
-
-                        <div class="menu-item-info">
-                            <span><i class="fas fa-clock"></i> 10-12 min</span>
-                            <span><i class="fas fa-users"></i> Serve 1 pessoa</span>
-                        </div>
-
-                        <button class="add-to-cart" data-name="Espetinho Gourmet" data-price="12.90"
-                            data-image="https://images.unsplash.com/photo-1611270630250-5a9a8b7be1f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                            aria-label="Adicionar Espetinho Gourmet ao carrinho por R$ 12,90">
-                            <i class="fas fa-shopping-cart"></i>
-                            Adicionar ao Carrinho
-                        </button>
+                        <p class="menu-item-desc">Filé mignon, tomate cereja, cebola roxa e pimentão amarelo, finalizado
+                            com molho de ervas.</p>
+                        <span class="menu-item-badge">Novo</span>
+                        <button class="btn btn-secondary">Adicionar</button>
                     </div>
                 </div>
 
                 <!-- Item 4 -->
-                <div class="menu-item" data-category="porcoes" role="article" aria-labelledby="item-4-title">
+                <div class="menu-item" data-category="porcoes">
                     <div class="menu-item-img">
                         <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                            alt="Porção de batata frita dourada e crocante" loading="lazy">
+                            alt="Porção de Batata">
                     </div>
                     <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <div class="menu-item-title">
-                                <div class="menu-item-category">
-                                    <i class="fas fa-utensils"></i>
-                                    Porção
-                                </div>
-                                <h3 id="item-4-title">Batata Frita</h3>
-                            </div>
-                            <div class="menu-item-price" aria-label="Preço: R$ 15,90">
-                                R$ 15,90
-                            </div>
+                        <div class="menu-item-title">
+                            <h3>Batata Frita</h3>
+                            <span class="menu-item-price">R$ 15,90</span>
                         </div>
-
-                        <div class="menu-item-rating">
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="rating-text">4.7 (156 avaliações)</span>
-                        </div>
-
-                        <p class="menu-item-desc">Porção generosa de batata frita sequinha e crocante, acompanha molho
-                            especial da casa. Ideal para compartilhar ou como acompanhamento.</p>
-
-                        <div class="menu-item-info">
-                            <span><i class="fas fa-clock"></i> 5-7 min</span>
-                            <span><i class="fas fa-users"></i> Serve 2-3 pessoas</span>
-                        </div>
-
-                        <button class="add-to-cart" data-name="Batata Frita" data-price="15.90"
-                            data-image="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                            aria-label="Adicionar Batata Frita ao carrinho por R$ 15,90">
-                            <i class="fas fa-shopping-cart"></i>
-                            Adicionar ao Carrinho
-                        </button>
+                        <p class="menu-item-desc">Porção generosa de batata frita crocante, acompanha molho especial da
+                            casa.</p>
+                        <button class="btn btn-secondary">Adicionar</button>
                     </div>
                 </div>
 
                 <!-- Item 5 -->
-                <div class="menu-item" data-category="porcoes" role="article" aria-labelledby="item-5-title">
+                <div class="menu-item" data-category="porcoes">
                     <div class="menu-item-img">
                         <img src="https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                            alt="Porção de mandioca frita temperada com páprica" loading="lazy">
+                            alt="Porção de Mandioca">
                     </div>
                     <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <div class="menu-item-title">
-                                <div class="menu-item-category">
-                                    <i class="fas fa-utensils"></i>
-                                    Porção
-                                </div>
-                                <h3 id="item-5-title">Mandioca Frita</h3>
-                            </div>
-                            <div class="menu-item-price" aria-label="Preço: R$ 14,90">
-                                R$ 14,90
-                            </div>
+                        <div class="menu-item-title">
+                            <h3>Mandioca Frita</h3>
+                            <span class="menu-item-price">R$ 14,90</span>
                         </div>
-
-                        <div class="menu-item-rating">
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="rating-text">4.6 (89 avaliações)</span>
-                        </div>
-
-                        <p class="menu-item-desc">Mandioca selecionada, frita na hora e temperada com sal e páprica
-                            defumada. Textura cremosa por dentro e crocante por fora.</p>
-
-                        <div class="menu-item-info">
-                            <span><i class="fas fa-clock"></i> 6-8 min</span>
-                            <span><i class="fas fa-users"></i> Serve 2-3 pessoas</span>
-                        </div>
-
-                        <button class="add-to-cart" data-name="Mandioca Frita" data-price="14.90"
-                            data-image="https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                            aria-label="Adicionar Mandioca Frita ao carrinho por R$ 14,90">
-                            <i class="fas fa-shopping-cart"></i>
-                            Adicionar ao Carrinho
-                        </button>
+                        <p class="menu-item-desc">Mandioca selecionada, frita na hora e temperada com sal e páprica.</p>
+                        <button class="btn btn-secondary">Adicionar</button>
                     </div>
                 </div>
 
                 <!-- Item 6 -->
-                <div class="menu-item" data-category="bebidas" role="article" aria-labelledby="item-6-title">
+                <div class="menu-item" data-category="bebidas">
                     <div class="menu-item-img">
                         <img src="https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80"
-                            alt="Variedade de refrigerantes gelados em lata" loading="lazy">
+                            alt="Refrigerantes">
                     </div>
                     <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <div class="menu-item-title">
-                                <div class="menu-item-category">
-                                    <i class="fas fa-wine-glass"></i>
-                                    Bebida
-                                </div>
-                                <h3 id="item-6-title">Refrigerantes</h3>
-                            </div>
-                            <div class="menu-item-price" aria-label="Preço: R$ 5,90">
-                                R$ 5,90
-                            </div>
+                        <div class="menu-item-title">
+                            <h3>Refrigerantes</h3>
+                            <span class="menu-item-price">R$ 5,90</span>
                         </div>
-
-                        <div class="menu-item-rating">
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="rating-text">4.5 (203 avaliações)</span>
-                        </div>
-
-                        <p class="menu-item-desc">Lata 350ml bem gelada. Opções: Coca-Cola, Guaraná Antarctica, Fanta,
-                            Sprite, Pepsi e Schweppes. Perfeito para refrescar.</p>
-
-                        <div class="menu-item-info">
-                            <span><i class="fas fa-clock"></i> Imediato</span>
-                            <span><i class="fas fa-users"></i> Serve 1 pessoa</span>
-                        </div>
-
-                        <button class="add-to-cart" data-name="Refrigerantes" data-price="5.90"
-                            data-image="https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80"
-                            aria-label="Adicionar Refrigerantes ao carrinho por R$ 5,90">
-                            <i class="fas fa-shopping-cart"></i>
-                            Adicionar ao Carrinho
-                        </button>
+                        <p class="menu-item-desc">Lata 350ml - Coca-Cola, Guaraná, Fanta, Sprite, Pepsi e Schweppes.</p>
+                        <button class="btn btn-secondary">Adicionar</button>
                     </div>
                 </div>
 
                 <!-- Item 7 -->
-                <div class="menu-item" data-category="bebidas" role="article" aria-labelledby="item-7-title">
+                <div class="menu-item" data-category="bebidas">
                     <div class="menu-item-img">
                         <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80"
-                            alt="Sucos naturais frescos em copo grande" loading="lazy">
+                            alt="Sucos Naturais">
                     </div>
                     <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <div class="menu-item-title">
-                                <div class="menu-item-category">
-                                    <i class="fas fa-wine-glass"></i>
-                                    Bebida
-                                </div>
-                                <h3 id="item-7-title">Sucos Naturais</h3>
-                            </div>
-                            <div class="menu-item-price" aria-label="Preço: R$ 7,90">
-                                R$ 7,90
-                            </div>
+                        <div class="menu-item-title">
+                            <h3>Sucos Naturais</h3>
+                            <span class="menu-item-price">R$ 7,90</span>
                         </div>
-
-                        <div class="menu-item-rating">
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="rating-text">4.8 (145 avaliações)</span>
-                        </div>
-
-                        <p class="menu-item-desc">Copo 500ml de puro suco natural. Sabores: Laranja, Abacaxi, Maracujá,
-                            Limão e Manga. Feito na hora, sem conservantes.</p>
-
-                        <div class="menu-item-info">
-                            <span><i class="fas fa-clock"></i> 2-3 min</span>
-                            <span><i class="fas fa-users"></i> Serve 1 pessoa</span>
-                        </div>
-
-                        <button class="add-to-cart" data-name="Sucos Naturais" data-price="7.90"
-                            data-image="https://images.unsplash.com/photo-1603569283847-aa295f0d016a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80"
-                            aria-label="Adicionar Sucos Naturais ao carrinho por R$ 7,90">
-                            <i class="fas fa-shopping-cart"></i>
-                            Adicionar ao Carrinho
-                        </button>
+                        <p class="menu-item-desc">Copo 500ml - Laranja, Abacaxi, Maracujá, Limão e Manga.</p>
+                        <button class="btn btn-secondary">Adicionar</button>
                     </div>
                 </div>
 
                 <!-- Item 8 -->
-                <div class="menu-item" data-category="jantinha" role="article" aria-labelledby="item-8-title">
+                <div class="menu-item" data-category="jantinha">
                     <div class="menu-item-img">
-                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1481&q=80"
-                            alt="Prato executivo completo com arroz, feijão, carne e salada" loading="lazy">
-                        <div class="menu-item-badge">
-                            <i class="fas fa-utensils"></i>
-                            Completo
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+                            alt="Prato Executivo">
                     </div>
                     <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <div class="menu-item-title">
-                                <div class="menu-item-category">
-                                    <i class="fas fa-user-friends"></i>
-                                    Jantinha
-                                </div>
-                                <h3 id="item-8-title">Prato Executivo</h3>
-                            </div>
-                            <div class="menu-item-price" aria-label="Preço: R$ 22,90">
-                                R$ 22,90
-                            </div>
+                        <div class="menu-item-title">
+                            <h3>Prato Executivo</h3>
+                            <span class="menu-item-price">R$ 22,90</span>
                         </div>
-
-                        <div class="menu-item-rating">
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="rating-text">4.9 (218 avaliações)</span>
-                        </div>
-
-                        <p class="menu-item-desc">Prato completo com arroz, feijão, salada mista, farofa e sua escolha
-                            de 2 espetinhos + bebida inclusa. Uma refeição completa e balanceada.</p>
-
-                        <div class="menu-item-info">
-                            <span><i class="fas fa-clock"></i> 15-18 min</span>
-                            <span><i class="fas fa-users"></i> Serve 1 pessoa</span>
-                        </div>
-
-                        <button class="add-to-cart" data-name="Prato Executivo" data-price="22.90"
-                            data-image="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1481&q=80"
-                            aria-label="Adicionar Prato Executivo ao carrinho por R$ 22,90">
-                            <i class="fas fa-shopping-cart"></i>
-                            Adicionar ao Carrinho
-                        </button>
+                        <p class="menu-item-desc">Arroz, feijão, salada, farofa e sua escolha de 2 espetinhos + bebida.
+                        </p>
+                        <button class="btn btn-secondary">Adicionar</button>
                     </div>
                 </div>
             </div>
@@ -622,8 +3557,641 @@
             </div>
         </div>
     </section>
-    <!-- Scripts -->
-    <script src="index.js"></script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">Churrasquinho</a>
+                    <p>Levando sabor e qualidade para sua mesa desde 2010. Nossa missão é proporcionar momentos
+                        especiais através da gastronomia.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a <a
+                            href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Links Úteis</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#menu">Cardápio</a></li>
+                        <li><a href="#gallery">Galeria</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Categorias</h3>
+                    <ul>
+                        <li><a href="#menu">Churrasquinhos</a></li>
+                        <li><a href="#menu">Espetos Gourmet</a></li>
+                        <li><a href="#menu">Porções</a></li>
+                        <li><a href="#menu">Bebidas</a></li>
+                        <li><a href="#menu">Jantinha</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Receba nossas promoções e novidades diretamente em seu email!</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" class="newsletter-input" placeholder="Seu email aqui..." required>
+                        <button type="submit" class="newsletter-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <p style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.5);">
+                        Prometemos não enviar spam!
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Churrasquinho da Hora. Todos os direitos reservados. |
+                    <a href="#" style="color: rgba(255, 255, 255, 0.7);">Política de Privacidade</a> |
+                    <a href="#" style="color: rgba(255, 255, 255, 0.7);">Termos de Uso</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Elementos do DOM
+        const loader = document.querySelector('.loader');
+        const header = document.getElementById('header');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+        const backToTopBtn = document.getElementById('backToTop');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        // Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1000);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Back to top button
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const expanded = navLinks.classList.contains('active');
+            mobileMenuBtn.setAttribute('aria-expanded', expanded);
+
+            // Mudança do ícone
+            const icon = mobileMenuBtn.querySelector('i');
+            if (expanded) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Fechar menu mobile ao clicar em link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Menu filter functionality
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                // Filter menu items
+                menuItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filterValue === 'all' || category === filterValue) {
+                        item.style.display = 'block';
+                        // Animação de entrada
+                        item.style.animation = 'none';
+                        item.offsetHeight; // Trigger reflow
+                        item.style.animation = 'fadeInUp 0.5s ease-out';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Back to top functionality
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Gallery lightbox effect (simples)
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                const lightbox = document.createElement('div');
+                lightbox.className = 'lightbox';
+                lightbox.innerHTML = `
+                    <div class="lightbox-content">
+                        <span class="lightbox-close">&times;</span>
+                        <img src="${img.src}" alt="${img.alt}">
+                    </div>
+                `;
+
+                // CSS para lightbox
+                lightbox.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.9);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 10000;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                `;
+
+                const content = lightbox.querySelector('.lightbox-content');
+                content.style.cssText = `
+                    position: relative;
+                    max-width: 90%;
+                    max-height: 90%;
+                `;
+
+                const closeBtn = lightbox.querySelector('.lightbox-close');
+                closeBtn.style.cssText = `
+                    position: absolute;
+                    top: -40px;
+                    right: 0;
+                    color: white;
+                    font-size: 30px;
+                    cursor: pointer;
+                    z-index: 10001;
+                `;
+
+                const lightboxImg = lightbox.querySelector('img');
+                lightboxImg.style.cssText = `
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                `;
+
+                document.body.appendChild(lightbox);
+
+                // Animação de entrada
+                setTimeout(() => {
+                    lightbox.style.opacity = '1';
+                }, 10);
+
+                // Fechar lightbox
+                const closeLightbox = () => {
+                    lightbox.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(lightbox);
+                    }, 300);
+                };
+
+                closeBtn.addEventListener('click', closeLightbox);
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) {
+                        closeLightbox();
+                    }
+                });
+
+                // Fechar com ESC
+                document.addEventListener('keydown', function escHandler(e) {
+                    if (e.key === 'Escape') {
+                        closeLightbox();
+                        document.removeEventListener('keydown', escHandler);
+                    }
+                });
+            });
+        });
+
+        // Load more gallery functionality
+        let galleryPage = 1;
+        const galleryImagesPerPage = 6;
+
+        loadMoreGalleryBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            // Simular carregamento de mais imagens
+            const newImages = [
+                'https://images.unsplash.com/photo-1606755962773-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'https://images.unsplash.com/photo-1606755456206-b25206bfa233?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+            ];
+
+            const galleryContainer = document.querySelector('.gallery-container');
+            const button = loadMoreGalleryBtn;
+
+            button.textContent = 'Carregando...';
+            button.disabled = true;
+
+            setTimeout(() => {
+                newImages.forEach((src, index) => {
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item';
+                    galleryItem.innerHTML = `
+                        <img src="${src}" alt="Galeria ${galleryPage * 3 + index + 1}">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    `;
+
+                    // Adicionar evento de clique para lightbox
+                    galleryItem.addEventListener('click', () => {
+                        // Mesmo código do lightbox acima
+                        const img = galleryItem.querySelector('img');
+                        const lightbox = document.createElement('div');
+                        lightbox.className = 'lightbox';
+                        lightbox.innerHTML = `
+                            <div class="lightbox-content">
+                                <span class="lightbox-close">&times;</span>
+                                <img src="${img.src}" alt="${img.alt}">
+                            </div>
+                        `;
+
+                        lightbox.style.cssText = `
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: rgba(0, 0, 0, 0.9);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            z-index: 10000;
+                            opacity: 0;
+                            transition: opacity 0.3s ease;
+                        `;
+
+                        const content = lightbox.querySelector('.lightbox-content');
+                        content.style.cssText = `
+                            position: relative;
+                            max-width: 90%;
+                            max-height: 90%;
+                        `;
+
+                        const closeBtn = lightbox.querySelector('.lightbox-close');
+                        closeBtn.style.cssText = `
+                            position: absolute;
+                            top: -40px;
+                            right: 0;
+                            color: white;
+                            font-size: 30px;
+                            cursor: pointer;
+                            z-index: 10001;
+                        `;
+
+                        const lightboxImg = lightbox.querySelector('img');
+                        lightboxImg.style.cssText = `
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                        `;
+
+                        document.body.appendChild(lightbox);
+                        setTimeout(() => lightbox.style.opacity = '1', 10);
+
+                        const closeLightbox = () => {
+                            lightbox.style.opacity = '0';
+                            setTimeout(() => document.body.removeChild(lightbox), 300);
+                        };
+
+                        closeBtn.addEventListener('click', closeLightbox);
+                        lightbox.addEventListener('click', (e) => {
+                            if (e.target === lightbox) closeLightbox();
+                        });
+
+                        document.addEventListener('keydown', (e) => {
+                            if (e.key === 'Escape') {
+                                closeLightbox();
+                                document.removeEventListener('keydown', escHandler);
+                            }
+                        });
+                    });
+
+                    galleryContainer.appendChild(galleryItem);
+                });
+
+                galleryPage++;
+                button.textContent = 'Carregar Mais';
+                button.disabled = false;
+
+                // Esconder botão após 3 páginas
+                if (galleryPage > 3) {
+                    button.style.display = 'none';
+                }
+            }, 1000);
+        });
+
+        // Carousel functionality
+        const carouselTrack = document.getElementById('carouselTrack');
+        const carouselSlides = document.querySelectorAll('.carousel-slide');
+        const carouselPrev = document.getElementById('carouselPrev');
+        const carouselNext = document.getElementById('carouselNext');
+        const carouselIndicators = document.querySelectorAll('.indicator');
+        const carouselThumbnails = document.querySelectorAll('.carousel-thumbnail');
+        const carouselProgress = document.getElementById('carouselProgress');
+        const currentSlideNumber = document.getElementById('currentSlideNumber');
+        const totalSlidesNumber = document.getElementById('totalSlidesNumber');
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeImageModal = document.getElementById('closeImageModal');
+
+        let currentSlide = 0;
+        let isAnimating = false;
+        let autoplayInterval;
+
+        // Initialize carousel
+        function initCarousel() {
+            if (carouselSlides.length === 0) return;
+
+            totalSlidesNumber.textContent = carouselSlides.length;
+            updateSlideIndicator();
+            updateProgress();
+            startAutoplay();
+        }
+
+        // Update slide
+        function updateSlide(slideIndex, direction = 'next') {
+            if (isAnimating || slideIndex === currentSlide) return;
+
+            isAnimating = true;
+            
+            // Remove active class from current slide
+            carouselSlides[currentSlide].classList.remove('active');
+            
+            // Add direction class for animation
+            if (direction === 'next') {
+                carouselSlides[currentSlide].classList.add('prev');
+                carouselSlides[slideIndex].classList.add('next');
+            } else {
+                carouselSlides[currentSlide].classList.add('next');
+                carouselSlides[slideIndex].classList.add('prev');
+            }
+
+            // Update current slide
+            currentSlide = slideIndex;
+
+            // Activate new slide
+            setTimeout(() => {
+                carouselSlides.forEach(slide => {
+                    slide.classList.remove('prev', 'next');
+                });
+                carouselSlides[currentSlide].classList.add('active');
+                
+                // Update indicators
+                updateIndicators();
+                updateThumbnails();
+                updateSlideIndicator();
+                updateProgress();
+                
+                isAnimating = false;
+            }, 100);
+        }
+
+        // Update indicators
+        function updateIndicators() {
+            carouselIndicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Update thumbnails
+        function updateThumbnails() {
+            carouselThumbnails.forEach((thumb, index) => {
+                thumb.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Update slide indicator
+        function updateSlideIndicator() {
+            currentSlideNumber.textContent = currentSlide + 1;
+        }
+
+        // Update progress bar
+        function updateProgress() {
+            const progress = ((currentSlide + 1) / carouselSlides.length) * 100;
+            carouselProgress.style.width = progress + '%';
+        }
+
+        // Next slide
+        function nextSlide() {
+            const nextIndex = (currentSlide + 1) % carouselSlides.length;
+            updateSlide(nextIndex, 'next');
+        }
+
+        // Previous slide
+        function prevSlide() {
+            const prevIndex = (currentSlide - 1 + carouselSlides.length) % carouselSlides.length;
+            updateSlide(prevIndex, 'prev');
+        }
+
+        // Start autoplay
+        function startAutoplay() {
+            autoplayInterval = setInterval(() => {
+                if (!document.hidden) {
+                    nextSlide();
+                }
+            }, 5000);
+        }
+
+        // Stop autoplay
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+        }
+
+        // Event listeners
+        if (carouselNext) {
+            carouselNext.addEventListener('click', () => {
+                nextSlide();
+                stopAutoplay();
+                setTimeout(startAutoplay, 10000); // Restart autoplay after 10 seconds
+            });
+        }
+
+        if (carouselPrev) {
+            carouselPrev.addEventListener('click', () => {
+                prevSlide();
+                stopAutoplay();
+                setTimeout(startAutoplay, 10000); // Restart autoplay after 10 seconds
+            });
+        }
+
+        // Indicator click events
+        carouselIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                const direction = index > currentSlide ? 'next' : 'prev';
+                updateSlide(index, direction);
+                stopAutoplay();
+                setTimeout(startAutoplay, 10000); // Restart autoplay after 10 seconds
+            });
+        });
+
+        // Thumbnail click events
+        carouselThumbnails.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => {
+                const direction = index > currentSlide ? 'next' : 'prev';
+                updateSlide(index, direction);
+                stopAutoplay();
+                setTimeout(startAutoplay, 10000); // Restart autoplay after 10 seconds
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+                stopAutoplay();
+                setTimeout(startAutoplay, 10000);
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+                stopAutoplay();
+                setTimeout(startAutoplay, 10000);
+            }
+        });
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        if (carouselTrack) {
+            carouselTrack.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            carouselTrack.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+                stopAutoplay();
+                setTimeout(startAutoplay, 10000);
+            }
+        }
+
+        // Modal functionality
+        function openModal(imageSrc, imageAlt) {
+            modalImage.src = imageSrc;
+            modalImage.alt = imageAlt;
+            imageModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            imageModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Add click events to carousel slides for modal
+        carouselSlides.forEach((slide, index) => {
+            slide.addEventListener('click', (e) => {
+                if (e.target.tagName === 'IMG') {
+                    const img = e.target;
+                    openModal(img.src, img.alt);
+                }
+            });
+        });
+
+        // Modal close events
+        if (closeImageModal) {
+            closeImageModal.addEventListener('click', closeModal);
+        }
+
+        if (imageModal) {
+            imageModal.addEventListener('click', (e) => {
+                if (e.target === imageModal) {
+                    closeModal();
+                }
+            });
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Pause autoplay when tab is not visible
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopAutoplay();
+            } else {
+                startAutoplay();
+            }
+        });
+
+        // Initialize carousel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initCarousel);
+    </script>
 </body>
 
 </html>
