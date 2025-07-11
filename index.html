@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Churrasquinho da Hora - Os melhores espetinhos e porções da região">
+    <meta name="theme-color" content="#D32F2F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Churrasquinho">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="msapplication-TileColor" content="#D32F2F">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="https://via.placeholder.com/180x180?text=🍖">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://via.placeholder.com/152x152?text=🍖">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://via.placeholder.com/180x180?text=🍖">
+    <link rel="apple-touch-icon" sizes="167x167" href="https://via.placeholder.com/167x167?text=🍖">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://via.placeholder.com/32x32?text=🍖">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://via.placeholder.com/16x16?text=🍖">
+
+    <title>Churrasquinho da Hora | Espetinhos Gourmet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Skip Link para Acessibilidade -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <img src="https://via.placeholder.com/40x40" alt="Logo Churrasquinho" id="logo-img">
+                    <span>Churrasquinho</span>
+                </a>
+
+                <button class="mobile-menu-btn" aria-label="Abrir menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <ul class="nav-links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#menu">Cardápio</a></li>
+                </ul>
+
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Os melhores espetinhos da região</h1>
+                <p>Sabores autênticos preparados com ingredientes selecionados e muito carinho</p>
+                <div class="hero-btns">
+                    <a href="#menu" class="btn btn-primary">Ver Cardápio</a>
+                </div>
+            </div>
+        </div>
+
+        <a href="#menu" class="scroll-down" aria-label="Role para baixo">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <h2 class="section-title">Nosso Cardápio</h2>
+            <p class="text-center">Temos opções para todos os gostos. Clique nas categorias para filtrar.</p>
+
+            <div class="menu-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="churrasquinho">Churrasquinhos</button>
+                <button class="filter-btn" data-filter="gourmet">Gourmet</button>
+                <button class="filter-btn" data-filter="porcoes">Porções</button>
+                <button class="filter-btn" data-filter="bebidas">Bebidas</button>
+                <button class="filter-btn" data-filter="jantinha">Jantinha</button>
+            </div>
+
+            <div class="menu-grid">
+                <!-- Item 1 -->
+                <div class="menu-item" data-category="churrasquinho" role="article" aria-labelledby="item-1-title">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                            alt="Delicioso espetinho de carne bovina grelhado na churrasqueira" loading="lazy">
+                        <div class="menu-item-badge">
+                            <i class="fas fa-fire"></i>
+                            Mais Pedido
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <div class="menu-item-title">
+                                <div class="menu-item-category">
+                                    <i class="fas fa-drumstick-bite"></i>
+                                    Churrasquinho
+                                </div>
+                                <h3 id="item-1-title">Espetinho de Carne</h3>
+                            </div>
+                            <div class="menu-item-price" aria-label="Preço: R$ 8,90">
+                                R$ 8,90
+                            </div>
+                        </div>
+
+                        <div class="menu-item-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.9 (127 avaliações)</span>
+                        </div>
+
+                        <p class="menu-item-desc">Carne bovina de primeira qualidade, temperada com sal grosso e servida
+                            com farofa artesanal. Grelhado no ponto certo para garantir sabor e maciez.</p>
+
+                        <div class="menu-item-info">
+                            <span><i class="fas fa-clock"></i> 8-10 min</span>
+                            <span><i class="fas fa-users"></i> Serve 1 pessoa</span>
+                        </div>
+
+                        <button class="add-to-cart" data-name="Espetinho de Carne" data-price="8.90"
+                            data-image="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                            aria-label="Adicionar Espetinho de Carne ao carrinho por R$ 8,90">
+                            <i class="fas fa-shopping-cart"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="menu-item" data-category="churrasquinho" role="article" aria-labelledby="item-2-title">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"
+                            alt="Suculento espetinho de frango marinado e grelhado" loading="lazy">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <div class="menu-item-title">
+                                <div class="menu-item-category">
+                                    <i class="fas fa-drumstick-bite"></i>
+                                    Churrasquinho
+                                </div>
+                                <h3 id="item-2-title">Espetinho de Frango</h3>
+                            </div>
+                            <div class="menu-item-price" aria-label="Preço: R$ 7,90">
+                                R$ 7,90
+                            </div>
+                        </div>
+
+                        <div class="menu-item-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.8 (94 avaliações)</span>
+                        </div>
+
+                        <p class="menu-item-desc">Peito de frango marinado em tempero especial por 24 horas e grelhado
+                            na hora. Carne macia e saborosa, perfeita para qualquer ocasião.</p>
+
+                        <div class="menu-item-info">
+                            <span><i class="fas fa-clock"></i> 6-8 min</span>
+                            <span><i class="fas fa-users"></i> Serve 1 pessoa</span>
+                        </div>
+
+                        <button class="add-to-cart" data-name="Espetinho de Frango" data-price="7.90"
+                            data-image="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"
+                            aria-label="Adicionar Espetinho de Frango ao carrinho por R$ 7,90">
+                            <i class="fas fa-shopping-cart"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="menu-item" data-category="gourmet" role="article" aria-labelledby="item-3-title">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1611270630250-5a9a8b7be1f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                            alt="Espetinho gourmet com filé mignon e vegetais nobres" loading="lazy">
+                        <div class="menu-item-badge">
+                            <i class="fas fa-star"></i>
+                            Novo
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <div class="menu-item-title">
+                                <div class="menu-item-category">
+                                    <i class="fas fa-crown"></i>
+                                    Gourmet
+                                </div>
+                                <h3 id="item-3-title">Espetinho Gourmet</h3>
+                            </div>
+                            <div class="menu-item-price" aria-label="Preço: R$ 12,90">
+                                R$ 12,90
+                            </div>
+                        </div>
+
+                        <div class="menu-item-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.9 (73 avaliações)</span>
+                        </div>
+
+                        <p class="menu-item-desc">Filé mignon premium, tomate cereja, cebola roxa e pimentão amarelo,
+                            finalizado com molho de ervas finas. Uma experiência gastronômica única.</p>
+
+                        <div class="menu-item-info">
+                            <span><i class="fas fa-clock"></i> 10-12 min</span>
+                            <span><i class="fas fa-users"></i> Serve 1 pessoa</span>
+                        </div>
+
+                        <button class="add-to-cart" data-name="Espetinho Gourmet" data-price="12.90"
+                            data-image="https://images.unsplash.com/photo-1611270630250-5a9a8b7be1f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                            aria-label="Adicionar Espetinho Gourmet ao carrinho por R$ 12,90">
+                            <i class="fas fa-shopping-cart"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="menu-item" data-category="porcoes" role="article" aria-labelledby="item-4-title">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Porção de batata frita dourada e crocante" loading="lazy">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <div class="menu-item-title">
+                                <div class="menu-item-category">
+                                    <i class="fas fa-utensils"></i>
+                                    Porção
+                                </div>
+                                <h3 id="item-4-title">Batata Frita</h3>
+                            </div>
+                            <div class="menu-item-price" aria-label="Preço: R$ 15,90">
+                                R$ 15,90
+                            </div>
+                        </div>
+
+                        <div class="menu-item-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.7 (156 avaliações)</span>
+                        </div>
+
+                        <p class="menu-item-desc">Porção generosa de batata frita sequinha e crocante, acompanha molho
+                            especial da casa. Ideal para compartilhar ou como acompanhamento.</p>
+
+                        <div class="menu-item-info">
+                            <span><i class="fas fa-clock"></i> 5-7 min</span>
+                            <span><i class="fas fa-users"></i> Serve 2-3 pessoas</span>
+                        </div>
+
+                        <button class="add-to-cart" data-name="Batata Frita" data-price="15.90"
+                            data-image="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            aria-label="Adicionar Batata Frita ao carrinho por R$ 15,90">
+                            <i class="fas fa-shopping-cart"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="menu-item" data-category="porcoes" role="article" aria-labelledby="item-5-title">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                            alt="Porção de mandioca frita temperada com páprica" loading="lazy">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <div class="menu-item-title">
+                                <div class="menu-item-category">
+                                    <i class="fas fa-utensils"></i>
+                                    Porção
+                                </div>
+                                <h3 id="item-5-title">Mandioca Frita</h3>
+                            </div>
+                            <div class="menu-item-price" aria-label="Preço: R$ 14,90">
+                                R$ 14,90
+                            </div>
+                        </div>
+
+                        <div class="menu-item-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.6 (89 avaliações)</span>
+                        </div>
+
+                        <p class="menu-item-desc">Mandioca selecionada, frita na hora e temperada com sal e páprica
+                            defumada. Textura cremosa por dentro e crocante por fora.</p>
+
+                        <div class="menu-item-info">
+                            <span><i class="fas fa-clock"></i> 6-8 min</span>
+                            <span><i class="fas fa-users"></i> Serve 2-3 pessoas</span>
+                        </div>
+
+                        <button class="add-to-cart" data-name="Mandioca Frita" data-price="14.90"
+                            data-image="https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                            aria-label="Adicionar Mandioca Frita ao carrinho por R$ 14,90">
+                            <i class="fas fa-shopping-cart"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="menu-item" data-category="bebidas" role="article" aria-labelledby="item-6-title">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80"
+                            alt="Variedade de refrigerantes gelados em lata" loading="lazy">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <div class="menu-item-title">
+                                <div class="menu-item-category">
+                                    <i class="fas fa-wine-glass"></i>
+                                    Bebida
+                                </div>
+                                <h3 id="item-6-title">Refrigerantes</h3>
+                            </div>
+                            <div class="menu-item-price" aria-label="Preço: R$ 5,90">
+                                R$ 5,90
+                            </div>
+                        </div>
+
+                        <div class="menu-item-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.5 (203 avaliações)</span>
+                        </div>
+
+                        <p class="menu-item-desc">Lata 350ml bem gelada. Opções: Coca-Cola, Guaraná Antarctica, Fanta,
+                            Sprite, Pepsi e Schweppes. Perfeito para refrescar.</p>
+
+                        <div class="menu-item-info">
+                            <span><i class="fas fa-clock"></i> Imediato</span>
+                            <span><i class="fas fa-users"></i> Serve 1 pessoa</span>
+                        </div>
+
+                        <button class="add-to-cart" data-name="Refrigerantes" data-price="5.90"
+                            data-image="https://images.unsplash.com/photo-1554866585-cd94860890b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80"
+                            aria-label="Adicionar Refrigerantes ao carrinho por R$ 5,90">
+                            <i class="fas fa-shopping-cart"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 7 -->
+                <div class="menu-item" data-category="bebidas" role="article" aria-labelledby="item-7-title">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80"
+                            alt="Sucos naturais frescos em copo grande" loading="lazy">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <div class="menu-item-title">
+                                <div class="menu-item-category">
+                                    <i class="fas fa-wine-glass"></i>
+                                    Bebida
+                                </div>
+                                <h3 id="item-7-title">Sucos Naturais</h3>
+                            </div>
+                            <div class="menu-item-price" aria-label="Preço: R$ 7,90">
+                                R$ 7,90
+                            </div>
+                        </div>
+
+                        <div class="menu-item-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.8 (145 avaliações)</span>
+                        </div>
+
+                        <p class="menu-item-desc">Copo 500ml de puro suco natural. Sabores: Laranja, Abacaxi, Maracujá,
+                            Limão e Manga. Feito na hora, sem conservantes.</p>
+
+                        <div class="menu-item-info">
+                            <span><i class="fas fa-clock"></i> 2-3 min</span>
+                            <span><i class="fas fa-users"></i> Serve 1 pessoa</span>
+                        </div>
+
+                        <button class="add-to-cart" data-name="Sucos Naturais" data-price="7.90"
+                            data-image="https://images.unsplash.com/photo-1603569283847-aa295f0d016a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80"
+                            aria-label="Adicionar Sucos Naturais ao carrinho por R$ 7,90">
+                            <i class="fas fa-shopping-cart"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 8 -->
+                <div class="menu-item" data-category="jantinha" role="article" aria-labelledby="item-8-title">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1481&q=80"
+                            alt="Prato executivo completo com arroz, feijão, carne e salada" loading="lazy">
+                        <div class="menu-item-badge">
+                            <i class="fas fa-utensils"></i>
+                            Completo
+                        </div>
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <div class="menu-item-title">
+                                <div class="menu-item-category">
+                                    <i class="fas fa-user-friends"></i>
+                                    Jantinha
+                                </div>
+                                <h3 id="item-8-title">Prato Executivo</h3>
+                            </div>
+                            <div class="menu-item-price" aria-label="Preço: R$ 22,90">
+                                R$ 22,90
+                            </div>
+                        </div>
+
+                        <div class="menu-item-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.9 (218 avaliações)</span>
+                        </div>
+
+                        <p class="menu-item-desc">Prato completo com arroz, feijão, salada mista, farofa e sua escolha
+                            de 2 espetinhos + bebida inclusa. Uma refeição completa e balanceada.</p>
+
+                        <div class="menu-item-info">
+                            <span><i class="fas fa-clock"></i> 15-18 min</span>
+                            <span><i class="fas fa-users"></i> Serve 1 pessoa</span>
+                        </div>
+
+                        <button class="add-to-cart" data-name="Prato Executivo" data-price="22.90"
+                            data-image="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1481&q=80"
+                            aria-label="Adicionar Prato Executivo ao carrinho por R$ 22,90">
+                            <i class="fas fa-shopping-cart"></i>
+                            Adicionar ao Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Nossa Galeria</h2>
+            <p class="text-center">Veja nossos deliciosos pratos</p>
+
+            <!-- Carousel Premium -->
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide active">
+                        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Espetinhos grelhados na churrasqueira com tempero especial">
+                        <div class="slide-info">
+                            <h3>Espetinhos na Brasa</h3>
+                            <p>Nossos espetinhos grelhados no ponto perfeito, com tempero especial da casa</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1606755456206-b25206bfa233?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Ambiente acolhedor do restaurante com decoração rústica">
+                        <div class="slide-info">
+                            <h3>Ambiente Acolhedor</h3>
+                            <p>Um espaço perfeito para desfrutar de uma refeição em família ou com amigos</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Porções generosas de batata frita e acompanhamentos">
+                        <div class="slide-info">
+                            <h3>Porções Generosas</h3>
+                            <p>Acompanhamentos deliciosos para compartilhar com a família toda</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1606755962773-dff5c40bddf1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Mesa preparada para eventos especiais">
+                        <div class="slide-info">
+                            <h3>Eventos Especiais</h3>
+                            <p>Preparamos seu evento com todo carinho e dedicação</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Equipe de chefs especializados preparando espetinhos">
+                        <div class="slide-info">
+                            <h3>Equipe Especializada</h3>
+                            <p>Chefs experientes garantem a qualidade e sabor em cada espetinho</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Clientes satisfeitos aproveitando a refeição">
+                        <div class="slide-info">
+                            <h3>Satisfação Garantida</h3>
+                            <p>A felicidade dos nossos clientes é nossa maior recompensa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navegação Premium -->
+                <button class="carousel-nav prev" id="carouselPrev" aria-label="Imagem anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-nav next" id="carouselNext" aria-label="Próxima imagem">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Indicadores Premium -->
+                <div class="carousel-indicators" id="carouselIndicators">
+                    <button class="indicator active" data-slide="0" aria-label="Ir para imagem 1"></button>
+                    <button class="indicator" data-slide="1" aria-label="Ir para imagem 2"></button>
+                    <button class="indicator" data-slide="2" aria-label="Ir para imagem 3"></button>
+                    <button class="indicator" data-slide="3" aria-label="Ir para imagem 4"></button>
+                    <button class="indicator" data-slide="4" aria-label="Ir para imagem 5"></button>
+                    <button class="indicator" data-slide="5" aria-label="Ir para imagem 6"></button>
+                </div>
+
+                <!-- Indicador de Slide -->
+                <div class="carousel-slide-indicator" id="carouselSlideIndicator">
+                    <span id="currentSlideNumber">1</span> / <span id="totalSlidesNumber">6</span>
+                </div>
+
+                <!-- Barra de Progresso -->
+                <div class="carousel-progress" id="carouselProgress"></div>
+            </div>
+
+            <!-- Thumbnail Navigation -->
+            <div class="carousel-thumbnails" id="carouselThumbnails">
+                <div class="carousel-thumbnail active" data-slide="0">
+                    <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                        alt="Espetinhos na brasa">
+                </div>
+                <div class="carousel-thumbnail" data-slide="1">
+                    <img src="https://images.unsplash.com/photo-1606755456206-b25206bfa233?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                        alt="Ambiente acolhedor">
+                </div>
+                <div class="carousel-thumbnail" data-slide="2">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                        alt="Porções generosas">
+                </div>
+                <div class="carousel-thumbnail" data-slide="3">
+                    <img src="https://images.unsplash.com/photo-1606755962773-dff5c40bddf1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                        alt="Eventos especiais">
+                </div>
+                <div class="carousel-thumbnail" data-slide="4">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                        alt="Equipe especializada">
+                </div>
+                <div class="carousel-thumbnail" data-slide="5">
+                    <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
+                        alt="Clientes satisfeitos">
+                </div>
+            </div>
+
+            <!-- Modal de Imagem -->
+            <div class="image-modal" id="imageModal">
+                <img id="modalImage" src="" alt="">
+                <button class="close-modal" id="closeImageModal" aria-label="Fechar imagem">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Scripts -->
+    <script src="index.js"></script>
+</body>
+
+</html>
