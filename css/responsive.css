@@ -42,6 +42,16 @@
         gap: 10px;
     }
     
+    /* Social Contact Section */
+    .social-contact-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+    }
+    
+    .social-card {
+        padding: 35px;
+    }
+    
     /* Footer */
     .footer-container {
         grid-template-columns: repeat(2, 1fr);
@@ -134,6 +144,31 @@
     .carousel-slide {
         height: 350px;
     }
+    
+    /* Social Contact Section */
+    .social-contact {
+        padding: 60px 0;
+    }
+    
+    .social-contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .social-card {
+        padding: 30px;
+    }
+    
+    .social-card-header {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    
+    .social-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
 }
 
 /* Estilos para dispositivos móveis pequenos */
@@ -218,6 +253,49 @@
     
     .carousel-thumbnails {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Social Contact Section */
+    .social-contact {
+        padding: 40px 0;
+    }
+    
+    .social-card {
+        padding: 25px;
+        border-radius: 15px;
+    }
+    
+    .social-card-header h3 {
+        font-size: 1.5rem;
+    }
+    
+    .instagram-handle,
+    .whatsapp-number {
+        font-size: 1.2rem;
+        padding: 12px 15px;
+    }
+    
+    .btn-instagram,
+    .btn-whatsapp {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+    
+    .cta-banner {
+        padding: 25px 15px;
+    }
+    
+    .cta-banner h3 {
+        font-size: 1.4rem;
+    }
+    
+    .cta-banner p {
+        font-size: 1rem;
+    }
+    
+    .hashtag {
+        font-size: 0.8rem;
+        padding: 6px 12px;
     }
     
     /* Footer */
