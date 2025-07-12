@@ -60,6 +60,9 @@ document.addEventListener('DOMContentLoaded', function() {
         saveCart();
         updateCartUI();
         
+        // Adicionar animação de atualização do carrinho
+        triggerCartUpdateAnimation();
+        
         // Mostrar notificação
         if (window.showCartNotification) {
             showCartNotification(itemData);
@@ -71,6 +74,9 @@ document.addEventListener('DOMContentLoaded', function() {
         cart = cart.filter(item => item.id !== itemId);
         saveCart();
         updateCartUI();
+        
+        // Adicionar animação de atualização do carrinho
+        triggerCartUpdateAnimation();
     };
     
     // Atualizar quantidade de um item
@@ -99,8 +105,21 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateCartUI() {
         // Atualizar contador de itens no ícone do carrinho
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const previousCount = cartItemCount.textContent;
+        
         cartItemCount.textContent = totalItems;
         cartToggle.setAttribute('data-count', totalItems);
+        
+        // Animar mudança do contador se for diferente
+        if (previousCount !== totalItems.toString() && totalItems > 0) {
+            const countElement = cartToggle.querySelector('.cart-count');
+            if (countElement) {
+                countElement.classList.add('count-changed');
+                setTimeout(() => {
+                    countElement.classList.remove('count-changed');
+                }, 300);
+            }
+        }
         
         // Calcular subtotal
         const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -122,6 +141,16 @@ document.addEventListener('DOMContentLoaded', function() {
             cartEmptyView.style.display = 'none';
             renderCartItems();
             checkoutBtn.disabled = false;
+        }
+    }
+    
+    // Função para animar o carrinho quando item é adicionado
+    function triggerCartUpdateAnimation() {
+        if (cartToggle) {
+            cartToggle.classList.add('cart-updated');
+            setTimeout(() => {
+                cartToggle.classList.remove('cart-updated');
+            }, 600);
         }
     }
     
