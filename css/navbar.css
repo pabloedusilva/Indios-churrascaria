@@ -32,32 +32,30 @@
 }
 
 .navbar-header.hero-transparent {
-    background: rgba(255, 255, 255, 0.08) !important;
-    backdrop-filter: blur(25px) saturate(1.8) !important;
-    -webkit-backdrop-filter: blur(25px) saturate(1.8) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
 }
 
-.navbar-header.hero-transparent::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    pointer-events: none;
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    height: var(--navbar-height);
+    position: relative;
+    transition: var(--navbar-transition);
 }
 
-.navbar-header.hero-transparent .navbar-collapse {
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
+.navbar-header.scrolled .navbar {
+    height: var(--navbar-height-scrolled);
 }
 
 .navbar-header.hero-transparent .nav-link {
-    color: var(--dark) !important;
+    color: rgb(0, 0, 0)nt;
     font-weight: 600;
-    background-color: rgba(248, 249, 250, 0.7) !important;
 }
 
 .navbar-header.hero-transparent .nav-link:hover {
@@ -80,14 +78,6 @@
 
 .navbar-header.hero-transparent .brand-subtitle {
     color: rgba(255, 255, 255, 0.8) !important;
-}
-
-.navbar-header.hero-transparent .navbar-brand:hover {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-.navbar-header.hero-transparent .navbar-brand:hover .brand-title {
-    color: var(--primary) !important;
 }
 
 /* Brand / Logo */
@@ -628,23 +618,4 @@
         transform: scale(4);
         opacity: 0;
     }
-}
-
-/* Performance optimization */
-.navbar-header.hero-transparent {
-    will-change: background-color, backdrop-filter;
-}
-
-/* Ensure proper z-index for navbar */
-.navbar-header {
-    z-index: 1000;
-}
-
-/* Logo visibility adjustments */
-.navbar-header .navbar-brand .logo-img {
-    transition: all 0.3s ease;
-}
-
-.navbar-header.hero-transparent .navbar-brand .logo-img {
-    filter: brightness(1.2) contrast(1.1);
 }
