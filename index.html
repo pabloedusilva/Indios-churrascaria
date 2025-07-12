@@ -3,13 +3,77 @@
 
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
         <meta name="description"
             content="Churrasquinho da Hora - Os melhores espetinhos e porções da região">
+        <meta name="theme-color" content="#D32F2F">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        <meta name="apple-mobile-web-app-title" content="Churrasquinho">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="mobile-web-app-capable" content="yes">
         <title>Churrasquinho da Hora | Espetinhos Gourmet</title>
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="responsive.css">
+        <style>
+            /* Critical CSS for fast mobile loading */
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            
+            body {
+                font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                overflow-x: hidden;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+                background-color: #FAFAFA;
+            }
+            
+            .loader {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, #D32F2F 0%, #B71C1C 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                transition: opacity 0.3s ease;
+            }
+            
+            .loader-spinner {
+                width: 50px;
+                height: 50px;
+                border: 3px solid rgba(255, 255, 255, 0.3);
+                border-top: 3px solid white;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+            }
+            
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+            
+            .container {
+                width: 100%;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 15px;
+            }
+            
+            @media (max-width: 480px) {
+                .container {
+                    padding: 0 10px;
+                }
+            }
+        </style>
     </head>
 
     <body>
@@ -442,24 +506,6 @@
                             <li><a href="#menu">Jantinha</a></li>
                         </ul>
                     </div>
-
-                    <div class="footer-newsletter">
-                        <h3>Newsletter</h3>
-                        <p>Receba nossas promoções e novidades diretamente em
-                            seu email!</p>
-                        <form class="newsletter-form" id="newsletterForm">
-                            <input type="email" class="newsletter-input"
-                                placeholder="Seu email aqui..." required>
-                            <button type="submit" class="newsletter-btn">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </form>
-                        <p
-                            style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.5);">
-                            Prometemos não enviar spam!
-                        </p>
-                    </div>
-                </div>
 
                 <div class="footer-bottom">
                     <p>&copy; 2024 Churrasquinho da Hora. Todos os direitos

@@ -248,7 +248,7 @@ const closeImageModal = document.getElementById('closeImageModal');
 let currentSlide = 0;
 let isAnimating = false;
 let autoplayInterval;
-let autoplayDelay = 4000; // 4 seconds autoplay
+let autoplayDelay = 3000; // 3 seconds autoplay for faster rotation
 
 // Initialize carousel
 function initCarousel() {
@@ -311,7 +311,7 @@ function updateSlide(slideIndex, direction = 'next') {
         updateProgress();
 
         isAnimating = false;
-    }, 800); // Match CSS transition duration
+    }, 600); // Match CSS transition duration (optimized)
 }
 
 // Update indicators
@@ -443,19 +443,7 @@ if (carouselTrack) {
 }
 
 function handleSwipe() {
-    const swipeThreshold = 50;
-    const diffX = touchStartX - touchEndX;
-    const diffY = touchStartY - touchEndY;
-
-    // Only handle horizontal swipes
-    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > swipeThreshold) {
-        if (diffX > 0) {
-            nextSlide();
-        } else {
-            prevSlide();
-        }
-        pauseAutoplay();
-    }
+    enhancedHandleSwipe();
 }
 
 // Modal functionality
@@ -529,14 +517,215 @@ if (carouselTrack) {
     });
 }
 
-// Initialize carousel when DOM is loaded
+// Enhanced mobile optimizations
+function initMobileOptimizations() {
+    // Faster autoplay for mobile devices
+    if (window.innerWidth <= 768) {
+        autoplayDelay = 2500; // Faster rotation on mobile
+    }
+    
+    // Optimize touch interactions
+    const touchElements = document.querySelectorAll('.carousel-nav, .carousel-thumbnail, .indicator, .btn, .filter-btn');
+    touchElements.forEach(element => {
+        element.style.touchAction = 'manipulation';
+        element.style.webkitTapHighlightColor = 'rgba(0, 0, 0, 0)';
+    });
+    
+    // Preload next image for smoother transitions
+    preloadNextImage();
+    
+    // Reduce motion for performance if needed
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        autoplayDelay = 0; // Disable autoplay for reduced motion
+    }
+}
+
+// Preload next image for better performance
+function preloadNextImage() {
+    if (carouselSlides.length > 0) {
+        const nextIndex = (currentSlide + 1) % carouselSlides.length;
+        const nextImage = carouselSlides[nextIndex].querySelector('img');
+        if (nextImage && !nextImage.complete) {
+            const preloadImg = new Image();
+            preloadImg.src = nextImage.src;
+        }
+    }
+}
+
+// Optimize carousel for mobile with better touch handling
+function enhancedHandleSwipe() {
+    const swipeThreshold = window.innerWidth <= 768 ? 30 : 50; // Lower threshold for mobile
+    const diffX = touchStartX - touchEndX;
+    const diffY = touchStartY - touchEndY;
+
+    // Only handle horizontal swipes with improved sensitivity
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > swipeThreshold) {
+        if (diffX > 0) {
+            nextSlide();
+        } else {
+            prevSlide();
+        }
+        pauseAutoplay();
+    }
+}
+
+// Mobile-specific event listeners
+function initMobileEvents() {
+    // Handle orientation changes
+    window.addEventListener('orientationchange', () => {
+        setTimeout(() => {
+            initMobileOptimizations();
+            // Recalculate carousel dimensions
+            if (carouselSlides.length > 0) {
+                updateProgress();
+            }
+        }, 100);
+    });
+    
+    // Handle resize events for responsive behavior
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            initMobileOptimizations();
+            updateProgress();
+        }, 250);
+    });
+    
+    // Optimize scroll performance
+    let scrollTimer;
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+            // Pause autoplay when scrolling
+            if (Math.abs(window.scrollY - (window.lastScrollY || 0)) > 100) {
+                stopAutoplay();
+                setTimeout(() => {
+                    if (!document.hidden && !imageModal.classList.contains('active')) {
+                        startAutoplay();
+                    }
+                }, 1000);
+            }
+            window.lastScrollY = window.scrollY;
+        }, 100);
+    });
+}
+
+// Initialize all mobile optimizations
 document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(initCarousel, 100); // Small delay to ensure all elements are ready
+    initMobileOptimizations();
+    initMobileEvents();
 });
 
-// Initialize carousel when window is loaded (backup)
-window.addEventListener('load', () => {
-    if (carouselSlides.length > 0 && !autoplayInterval) {
-        initCarousel();
-    }
+// Update the carousel initialization
+const originalInitCarousel = initCarousel;
+initCarousel = function() {
+    originalInitCarousel.call(this);
+    initMobileOptimizations();
+}
+
+// Enhanced Menu Cards Interactions
+document.addEventListener('DOMContentLoaded', () => {
+    const menuItems = document.querySelectorAll('.menu-item');
+    
+    // Add advanced hover effects
+    menuItems.forEach(item => {
+        // Add loading animation on card click
+        const addBtn = item.querySelector('.btn');
+        if (addBtn) {
+            addBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Add loading state
+                addBtn.style.transform = 'scale(0.95)';
+                addBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adicionando...';
+                
+                // Simulate API call
+                setTimeout(() => {
+                    addBtn.innerHTML = '<i class="fas fa-check"></i> Adicionado!';
+                    addBtn.style.background = 'linear-gradient(135deg, var(--success), #4caf50)';
+                    
+                    // Reset after 2 seconds
+                    setTimeout(() => {
+                        addBtn.innerHTML = 'Adicionar';
+                        addBtn.style.transform = '';
+                        addBtn.style.background = '';
+                    }, 2000);
+                }, 800);
+            });
+        }
+        
+        // Add subtle animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out';
+                    entry.target.style.animationDelay = `${Math.random() * 0.3}s`;
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        observer.observe(item);
+    });
+    
+    // Enhanced filter animations
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const menuGrid = document.querySelector('.menu-grid');
+    
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Add ripple effect
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            btn.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+            
+            // Add stagger animation to visible items
+            const visibleItems = menuGrid.querySelectorAll('.menu-item:not([style*="display: none"])');
+            visibleItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+                item.style.animation = 'fadeInScale 0.5s ease-out';
+            });
+        });
+    });
 });
+
+// Add CSS for ripple effect
+const style = document.createElement('style');
+style.textContent = `
+    .filter-btn {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        transform: scale(0);
+        animation: ripple-animation 0.6s linear;
+        pointer-events: none;
+    }
+    
+    @keyframes ripple-animation {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes fadeInScale {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+`;
+document.head.appendChild(style);
