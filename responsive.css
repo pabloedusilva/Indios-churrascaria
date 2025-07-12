@@ -1,0 +1,186 @@
+/* Responsive Styles */
+
+/* Estilos para tablets e dispositivos médios */
+@media (max-width: 992px) {
+    /* Layout geral */
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    section {
+        padding: 4rem 0;
+    }
+    
+    /* Menu Section */
+    .menu-filters {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .filter-btn {
+        margin: 0.3rem;
+        font-size: 0.9rem;
+    }
+    
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    /* Carousel */
+    .carousel-slide {
+        height: 400px;
+    }
+    
+    .carousel-thumbnails {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    /* Footer */
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+    /* Header */
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 75%;
+        max-width: 300px;
+        height: calc(100vh - 70px);
+        background-color: white;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 2rem;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        z-index: 999;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links li {
+        margin: 0 0 1.5rem;
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding: 6rem 0 3rem;
+    }
+    
+    .hero-content {
+        text-align: center;
+    }
+    
+    .hero-btns {
+        justify-content: center;
+    }
+    
+    /* Menu Section */
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .menu-item {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    /* Gallery */
+    .carousel-slide {
+        height: 350px;
+    }
+}
+
+/* Estilos para dispositivos móveis pequenos */
+@media (max-width: 576px) {
+    /* Layout geral */
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+    }
+    
+    p {
+        font-size: 0.95rem;
+    }
+    
+    section {
+        padding: 3rem 0;
+    }
+    
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.95rem;
+    }
+    
+    /* Menu Section */
+    .filter-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+        margin: 0.2rem;
+    }
+    
+    /* Menu Items */
+    .menu-item-title h3 {
+        font-size: 1.3rem;
+    }
+    
+    .menu-item-price {
+        font-size: 1.1rem;
+    }
+    
+    .menu-item-img {
+        height: 180px;
+    }
+    
+    /* Gallery */
+    .carousel-slide {
+        height: 250px;
+    }
+    
+    .slide-info h3 {
+        font-size: 1.2rem;
+    }
+    
+    .carousel-thumbnails {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Footer */
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .social-link {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* Animações para mobile */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0s !important;
+        transition-duration: 0s !important;
+    }
+}

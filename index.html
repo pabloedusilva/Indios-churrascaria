@@ -16,7 +16,10 @@
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="menu-cards.css">
+        <link rel="stylesheet" href="footer.css">
         <link rel="stylesheet" href="responsive.css">
+        <link rel="stylesheet" href="notification.css">
         <style>
             /* Critical CSS for fast mobile loading */
             * {
@@ -77,14 +80,10 @@
     </head>
 
     <body>
-        <!-- Loader -->
-        <div class="loader">
-            <div class="loader-spinner"></div>
+        <!-- Sistema de Notificação -->
+        <div class="notification-container" id="notificationContainer">
+            <!-- As notificações serão adicionadas aqui dinamicamente -->
         </div>
-
-        <!-- Skip Link para Acessibilidade -->
-        <a href="#main-content" class="skip-link">Pular para o conteúdo
-            principal</a>
 
         <!-- Header -->
         <header id="header">
@@ -161,6 +160,10 @@
                                 alt="Espetinho de Carne">
                         </div>
                         <div class="menu-item-content">
+                            <div class="menu-item-tags">
+                                <span class="menu-item-tag featured"><i class="fas fa-star"></i> Mais vendido</span>
+                                <span class="menu-item-tag"><i class="fas fa-fire"></i> Na brasa</span>
+                            </div>
                             <div class="menu-item-title">
                                 <h3>Espetinho de Carne</h3>
                                 <span class="menu-item-price">R$ 8,90</span>
@@ -168,7 +171,20 @@
                             <p class="menu-item-desc">Carne bovina de primeira
                                 qualidade, temperada com sal grosso e servida
                                 com farofa artesanal.</p>
-                            <button class="btn btn-secondary">Adicionar</button>
+                            <div class="menu-item-meta">
+                                <div class="menu-item-serving">
+                                    <i class="fas fa-users"></i> Serve 1 pessoa
+                                </div>
+                                <div class="menu-item-category">
+                                    <i class="fas fa-utensils"></i> Churrasquinho
+                                </div>
+                                <div class="menu-item-time">
+                                    <i class="fas fa-clock"></i> 5-7 min
+                                </div>
+                            </div>
+                            <div class="menu-item-actions">
+                                <button class="btn btn-secondary"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+                            </div>
                         </div>
                     </div>
 
@@ -180,13 +196,30 @@
                                 alt="Espetinho de Frango">
                         </div>
                         <div class="menu-item-content">
+                            <div class="menu-item-tags">
+                                <span class="menu-item-tag"><i class="fas fa-fire"></i> Na brasa</span>
+                                <span class="menu-item-tag"><i class="fas fa-heart"></i> Saudável</span>
+                            </div>
                             <div class="menu-item-title">
                                 <h3>Espetinho de Frango</h3>
                                 <span class="menu-item-price">R$ 7,90</span>
                             </div>
                             <p class="menu-item-desc">Peito de frango marinado
                                 em tempero especial e grelhado na hora.</p>
-                            <button class="btn btn-secondary">Adicionar</button>
+                            <div class="menu-item-meta">
+                                <div class="menu-item-serving">
+                                    <i class="fas fa-users"></i> Serve 1 pessoa
+                                </div>
+                                <div class="menu-item-category">
+                                    <i class="fas fa-drumstick-bite"></i> Churrasquinho
+                                </div>
+                                <div class="menu-item-time">
+                                    <i class="fas fa-clock"></i> 6-8 min
+                                </div>
+                            </div>
+                            <div class="menu-item-actions">
+                                <button class="btn btn-secondary"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+                            </div>
                         </div>
                     </div>
 
@@ -206,8 +239,21 @@
                                 cereja, cebola roxa e pimentão amarelo,
                                 finalizado
                                 com molho de ervas.</p>
+                            <div class="menu-item-meta">
+                                <div class="menu-item-serving">
+                                    <i class="fas fa-users"></i> Serve 1 pessoa
+                                </div>
+                                <div class="menu-item-category">
+                                    <i class="fas fa-star"></i> Gourmet
+                                </div>
+                                <div class="menu-item-time">
+                                    <i class="fas fa-clock"></i> 8-10 min
+                                </div>
+                            </div>
                             <span class="menu-item-badge">Novo</span>
-                            <button class="btn btn-secondary">Adicionar</button>
+                            <div class="menu-item-actions">
+                                <button class="btn btn-secondary"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+                            </div>
                         </div>
                     </div>
 
@@ -226,7 +272,20 @@
                             <p class="menu-item-desc">Porção generosa de batata
                                 frita crocante, acompanha molho especial da
                                 casa.</p>
-                            <button class="btn btn-secondary">Adicionar</button>
+                            <div class="menu-item-meta">
+                                <div class="menu-item-serving">
+                                    <i class="fas fa-users"></i> Serve 2-3 pessoas
+                                </div>
+                                <div class="menu-item-category">
+                                    <i class="fas fa-bacon"></i> Porções
+                                </div>
+                                <div class="menu-item-time">
+                                    <i class="fas fa-clock"></i> 10-12 min
+                                </div>
+                            </div>
+                            <div class="menu-item-actions">
+                                <button class="btn btn-secondary"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+                            </div>
                         </div>
                     </div>
 
@@ -244,7 +303,20 @@
                             </div>
                             <p class="menu-item-desc">Mandioca selecionada,
                                 frita na hora e temperada com sal e páprica.</p>
-                            <button class="btn btn-secondary">Adicionar</button>
+                            <div class="menu-item-meta">
+                                <div class="menu-item-serving">
+                                    <i class="fas fa-users"></i> Serve 2-3 pessoas
+                                </div>
+                                <div class="menu-item-category">
+                                    <i class="fas fa-bacon"></i> Porções
+                                </div>
+                                <div class="menu-item-time">
+                                    <i class="fas fa-clock"></i> 12-15 min
+                                </div>
+                            </div>
+                            <div class="menu-item-actions">
+                                <button class="btn btn-secondary"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+                            </div>
                         </div>
                     </div>
 
@@ -262,7 +334,20 @@
                             </div>
                             <p class="menu-item-desc">Lata 350ml - Coca-Cola,
                                 Guaraná, Fanta, Sprite, Pepsi e Schweppes.</p>
-                            <button class="btn btn-secondary">Adicionar</button>
+                            <div class="menu-item-meta">
+                                <div class="menu-item-serving">
+                                    <i class="fas fa-users"></i> Serve 1 pessoa
+                                </div>
+                                <div class="menu-item-category">
+                                    <i class="fas fa-glass-cheers"></i> Bebidas
+                                </div>
+                                <div class="menu-item-time">
+                                    <i class="fas fa-clock"></i> Imediato
+                                </div>
+                            </div>
+                            <div class="menu-item-actions">
+                                <button class="btn btn-secondary"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+                            </div>
                         </div>
                     </div>
 
@@ -280,7 +365,20 @@
                             </div>
                             <p class="menu-item-desc">Copo 500ml - Laranja,
                                 Abacaxi, Maracujá, Limão e Manga.</p>
-                            <button class="btn btn-secondary">Adicionar</button>
+                            <div class="menu-item-meta">
+                                <div class="menu-item-serving">
+                                    <i class="fas fa-users"></i> Serve 1 pessoa
+                                </div>
+                                <div class="menu-item-category">
+                                    <i class="fas fa-glass-cheers"></i> Bebidas
+                                </div>
+                                <div class="menu-item-time">
+                                    <i class="fas fa-clock"></i> 3-5 min
+                                </div>
+                            </div>
+                            <div class="menu-item-actions">
+                                <button class="btn btn-secondary"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+                            </div>
                         </div>
                     </div>
 
@@ -299,7 +397,20 @@
                             <p class="menu-item-desc">Arroz, feijão, salada,
                                 farofa e sua escolha de 2 espetinhos + bebida.
                             </p>
-                            <button class="btn btn-secondary">Adicionar</button>
+                            <div class="menu-item-meta">
+                                <div class="menu-item-serving">
+                                    <i class="fas fa-users"></i> Serve 1 pessoa
+                                </div>
+                                <div class="menu-item-category">
+                                    <i class="fas fa-utensils"></i> Jantinha
+                                </div>
+                                <div class="menu-item-time">
+                                    <i class="fas fa-clock"></i> 15-20 min
+                                </div>
+                            </div>
+                            <div class="menu-item-actions">
+                                <button class="btn btn-secondary"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -528,6 +639,7 @@
 
         <!-- JavaScript -->
         <script src="index.js"></script>
+        <script src="notification-script.js"></script>
     </body>
 
 </html>

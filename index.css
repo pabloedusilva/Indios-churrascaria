@@ -1,19 +1,19 @@
 /* CSS Reset e Variáveis */
 :root {
-    --primary: #D32F2F;
-    --primary-dark: #B71C1C;
+    --primary: #E53935;
+    --primary-dark: #C62828;
     --primary-light: #FF6659;
     --secondary: #FFA000;
-    --secondary-dark: #FF6F00;
-    --dark: #212121;
-    --light: #FAFAFA;
+    --secondary-dark: #FF8F00;
+    --dark: #424242;
+    --light: #FFFFFF;
     --gray: #757575;
-    --gray-light: #E0E0E0;
-    --success: #388E3C;
+    --gray-light: #F5F5F5;
+    --success: #4CAF50;
     --font-main: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 5px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.07), 0 6px 12px rgba(0, 0, 0, 0.03);
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -33,6 +33,7 @@ body {
     background-color: var(--light);
     line-height: 1.6;
     overflow-x: hidden;
+    background-image: linear-gradient(to bottom, rgba(245, 245, 245, 0.5), rgba(255, 255, 255, 0.8));
 }
 
 /* Tipografia */
@@ -278,6 +279,7 @@ header.scrolled {
     background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
     position: relative;
     overflow: hidden;
+    padding-top: 1rem;
 }
 
 .menu::before {
@@ -288,7 +290,7 @@ header.scrolled {
     right: 0;
     bottom: 0;
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(211,47,47,0.02)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    opacity: 0.3;
+    opacity: 0.15;
     pointer-events: none;
 }
 
@@ -1568,16 +1570,15 @@ footer::before {
 
 /* Improved Menu Card Colors - Light Theme */
 .menu-item {
-    background: linear-gradient(145deg, #ffffff, #fdfdfd);
-    border-radius: 20px;
+    background: #ffffff;
+    border-radius: 16px;
     overflow: hidden;
     box-shadow: 
-        0 10px 40px rgba(0, 0, 0, 0.06),
-        0 4px 12px rgba(0, 0, 0, 0.04),
-        0 2px 6px rgba(0, 0, 0, 0.02);
+        0 8px 25px rgba(0, 0, 0, 0.04),
+        0 4px 10px rgba(0, 0, 0, 0.02);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
-    border: 1px solid rgba(211, 47, 47, 0.06);
+    border: 1px solid rgba(233, 233, 233, 0.8);
     backdrop-filter: blur(10px);
 }
 
