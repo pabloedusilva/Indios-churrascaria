@@ -297,6 +297,24 @@ header.scrolled {
     height: 100%;
     object-fit: cover;
     z-index: -2;
+    pointer-events: none; /* Impede interação com o vídeo */
+}
+
+/* Oculta controles do vídeo em todos os navegadores */
+.hero-video::-webkit-media-controls {
+    display: none !important;
+}
+
+.hero-video::-moz-media-controls {
+    display: none !important;
+}
+
+.hero-video::-ms-media-controls {
+    display: none !important;
+}
+
+.hero-video::-o-media-controls {
+    display: none !important;
 }
 
 .hero-overlay {
@@ -1019,27 +1037,7 @@ header.scrolled {
         display: block;
     }
 
-    .nav-links {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background-color: white;
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem 0;
-        transition: var(--transition);
-        box-shadow: var(--shadow-md);
-    }
-
-    .nav-links.active {
-        left: 0;
-    }
-
-    .nav-links li {
-        margin: 1rem 0;
-    }
+   
 
     .hero-btns {
         flex-direction: column;

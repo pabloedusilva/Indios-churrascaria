@@ -12,6 +12,50 @@ window.addEventListener('load', () => {
     }, 1000);
 });
 
+// Garantir que o vídeo hero sempre rode automáticamente
+function ensureVideoAutoplay() {
+    const heroVideo = document.querySelector('.hero-video');
+    if (heroVideo) {
+        // Configurar propriedades do vídeo
+        heroVideo.muted = true;
+        heroVideo.loop = true;
+        heroVideo.autoplay = true;
+        heroVideo.playsInline = true;
+        
+        // Tentar reproduzir o vídeo
+        heroVideo.play().catch(() => {
+            // Se falhar, tentar novamente após interação do usuário
+            const playVideoOnInteraction = () => {
+                heroVideo.play().catch(() => {
+                    console.log('Não foi possível reproduzir o vídeo automaticamente');
+                });
+                document.removeEventListener('click', playVideoOnInteraction);
+                document.removeEventListener('touchstart', playVideoOnInteraction);
+            };
+            
+            document.addEventListener('click', playVideoOnInteraction);
+            document.addEventListener('touchstart', playVideoOnInteraction);
+        });
+        
+        // Impedir pausa do vídeo
+        heroVideo.addEventListener('pause', () => {
+            heroVideo.play();
+        });
+        
+        // Garantir que o vídeo continue rodando se perder o foco
+        heroVideo.addEventListener('ended', () => {
+            heroVideo.currentTime = 0;
+            heroVideo.play();
+        });
+    }
+}
+
+// Executar quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', ensureVideoAutoplay);
+
+// Executar também quando a página estiver completamente carregada
+window.addEventListener('load', ensureVideoAutoplay);
+
 // Back to top button scroll effect
 window.addEventListener('scroll', () => {
     // Back to top button
