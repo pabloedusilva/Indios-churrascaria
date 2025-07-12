@@ -60,36 +60,5 @@ function closeNotification(notification) {
     }, 300);
 }
 
-// Adicionar evento de clique aos botões de adicionar ao carrinho
-document.addEventListener('DOMContentLoaded', () => {
-    const addToCartButtons = document.querySelectorAll('.menu-item .btn-secondary');
-    
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const menuItem = this.closest('.menu-item');
-            const itemName = menuItem.querySelector('.menu-item-title h3').textContent;
-            const itemPrice = menuItem.querySelector('.menu-item-price').textContent;
-            const itemImage = menuItem.querySelector('.menu-item-img img').src;
-            
-            // Objeto com informações do item
-            const item = {
-                name: itemName,
-                price: itemPrice,
-                image: itemImage
-            };
-            
-            // Mostrar notificação
-            showCartNotification(item);
-            
-            // Adicionar classe para efeito visual
-            button.classList.add('added');
-            button.innerHTML = '<i class="fas fa-check"></i> Adicionado';
-            
-            // Reverter após 2 segundos
-            setTimeout(() => {
-                button.classList.remove('added');
-                button.innerHTML = '<i class="fas fa-shopping-cart"></i> Adicionar';
-            }, 2000);
-        });
-    });
-});
+// Event listener para efeitos visuais nos botões será adicionado no cart.js
+// para evitar duplicação de notificações

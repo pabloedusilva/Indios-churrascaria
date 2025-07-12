@@ -382,6 +382,19 @@
     font-size: 1.1rem;
 }
 
+/* Estilo para botão quando item é adicionado */
+.btn-secondary.added {
+    background: linear-gradient(135deg, #4CAF50, #388E3C) !important;
+    color: white !important;
+    transform: scale(0.95);
+    transition: all 0.3s ease !important;
+}
+
+.btn-secondary.added:hover {
+    background: linear-gradient(135deg, #4CAF50, #388E3C) !important;
+    transform: scale(0.95) !important;
+}
+
 /* Animações do carrinho */
 @keyframes slideIn {
     from {
@@ -445,22 +458,24 @@
     visibility: visible;
     transform: scale(1);
     transition: all 0.3s ease;
-    animation: floatGentle 3s ease-in-out infinite;
+    animation: breathe 6s ease-in-out infinite;
 }
 
-/* Animação suave de flutuação */
-@keyframes floatGentle {
+/* Animação de respiração sutil */
+@keyframes breathe {
     0%, 100% {
-        transform: translateY(0px) scale(1);
+        transform: scale(1) translateY(0px);
+        box-shadow: 0 8px 25px rgba(229, 57, 53, 0.3);
     }
     50% {
-        transform: translateY(-5px) scale(1);
+        transform: scale(1.02) translateY(-2px);
+        box-shadow: 0 10px 30px rgba(229, 57, 53, 0.35);
     }
 }
 
 /* Animação de pulsação sutil quando há itens no carrinho */
 .cart-toggle.floating-cart[data-count]:not([data-count="0"]) {
-    animation: floatGentle 3s ease-in-out infinite, pulseSubtle 2s ease-in-out infinite;
+    animation: breathe 4s ease-in-out infinite, pulseSubtle 3s ease-in-out infinite;
 }
 
 @keyframes pulseSubtle {
@@ -468,7 +483,7 @@
         box-shadow: 0 8px 25px rgba(229, 57, 53, 0.3);
     }
     50% {
-        box-shadow: 0 8px 25px rgba(229, 57, 53, 0.4), 0 0 0 0 rgba(229, 57, 53, 0.2);
+        box-shadow: 0 8px 25px rgba(229, 57, 53, 0.4), 0 0 0 3px rgba(229, 57, 53, 0.1);
     }
 }
 
@@ -551,6 +566,10 @@
     .cart-toggle.floating-cart.cart-updated {
         animation: none !important;
     }
+    
+    .cart-toggle.floating-cart[data-count]:not([data-count="0"]) {
+        animation: none !important;
+    }
 }
 
 .cart-toggle.floating-cart[data-count="0"] .cart-count {
@@ -561,7 +580,7 @@
 
 /* Animação sutil quando o carrinho está vazio */
 .cart-toggle.floating-cart[data-count="0"] {
-    animation: floatGentle 4s ease-in-out infinite;
+    animation: breathe 7s ease-in-out infinite;
 }
 
 /* Classe para animação quando item é adicionado */

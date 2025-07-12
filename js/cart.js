@@ -221,6 +221,16 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Adicionar ao carrinho
             window.addToCart(item);
+            
+            // Adicionar classe para efeito visual no botão
+            this.classList.add('added');
+            this.innerHTML = '<i class="fas fa-check"></i> Adicionado';
+            
+            // Reverter após 2 segundos
+            setTimeout(() => {
+                this.classList.remove('added');
+                this.innerHTML = '<i class="fas fa-shopping-cart"></i> Adicionar';
+            }, 2000);
         });
     });
 });
