@@ -1,8 +1,5 @@
 // Elementos do DOM
 const loader = document.querySelector('.loader');
-const header = document.getElementById('header');
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const navLinks = document.querySelector('.nav-links');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const menuItems = document.querySelectorAll('.menu-item');
 const backToTopBtn = document.getElementById('backToTop');
@@ -15,48 +12,14 @@ window.addEventListener('load', () => {
     }, 1000);
 });
 
-// Header scroll effect
+// Back to top button scroll effect
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-
     // Back to top button
     if (window.scrollY > 500) {
         backToTopBtn.classList.add('active');
     } else {
         backToTopBtn.classList.remove('active');
     }
-});
-
-// Mobile menu toggle
-mobileMenuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    const expanded = navLinks.classList.contains('active');
-    mobileMenuBtn.setAttribute('aria-expanded', expanded);
-
-    // Mudança do ícone
-    const icon = mobileMenuBtn.querySelector('i');
-    if (expanded) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-    } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-    }
-});
-
-// Fechar menu mobile ao clicar em link
-navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        const icon = mobileMenuBtn.querySelector('i');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-    });
 });
 
 // Smooth scroll para links internos

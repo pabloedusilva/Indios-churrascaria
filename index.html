@@ -16,6 +16,7 @@
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/navbar.css">
         <link rel="stylesheet" href="css/menu-cards.css">
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/responsive.css">
@@ -85,25 +86,67 @@
             <!-- As notificações serão adicionadas aqui dinamicamente -->
         </div>
 
-        <!-- Header -->
-        <header id="header">
+        <!-- Header Moderno e Minimalista -->
+        <header id="header" class="navbar-header">
             <div class="container">
                 <nav class="navbar">
-                    <a href="#" class="logo">
-                        <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/5106000-set-of-logo-template-barbecue-bbq-and-grill-steak-house-emblem-premium-vector-vetor.jpg"
-                            alt="Logo Churrasquinho" id="logo-img">
+                    <!-- Logo -->
+                    <a href="#home" class="navbar-brand">
+                        <div class="brand-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="brand-content">
+                            <span class="brand-title">Índios</span>
+                            <span class="brand-subtitle">Churrascaria</span>
+                        </div>
                     </a>
 
-                    <button class="mobile-menu-btn" aria-label="Abrir menu"
-                        aria-expanded="false">
-                        <i class="fas fa-bars"></i>
-                    </button>
+                    <!-- Navigation Links -->
+                    <div class="navbar-collapse" id="navbarMenu">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a href="#home" class="nav-link active" data-text="Início">
+                                    <i class="fas fa-home"></i>
+                                    <span>Início</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#menu" class="nav-link" data-text="Cardápio">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>Cardápio</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#gallery" class="nav-link" data-text="Galeria">
+                                    <i class="fas fa-images"></i>
+                                    <span>Galeria</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#contact" class="nav-link" data-text="Contato">
+                                    <i class="fas fa-phone"></i>
+                                    <span>Contato</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div class="navbar-cta">
+                        <a href="#menu" class="cta-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Pedir</span>
+                        </a>
+                    </div>
 
-                    <ul class="nav-links">
-                        <li><a href="#home">Início</a></li>
-                        <li><a href="#menu">Cardápio</a></li>
-                        <li><a href="#gallery">Galeria</a></li>
-                    </ul>
+                    <!-- Mobile Menu Toggle -->
+                    <button class="navbar-toggler" id="navbarToggler" aria-label="Abrir menu">
+                        <div class="toggler-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
                 </nav>
             </div>
         </header>
@@ -637,6 +680,7 @@
         </button>
 
         <!-- JavaScript -->
+        <script src="js/navbar.js"></script>
         <script src="js/index.js"></script>
         <script src="js/notification-script.js"></script>
     </body>
