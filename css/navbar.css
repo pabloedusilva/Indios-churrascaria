@@ -54,7 +54,7 @@
 }
 
 .navbar-header.hero-transparent .nav-link {
-    color: rgb(0, 0, 0)nt;
+    color:var(--dark);
     font-weight: 600;
 }
 
