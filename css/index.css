@@ -106,15 +106,91 @@ a {
     box-shadow: var(--shadow-md);
 }
 
+/* Botão outline com fundo transparente e blur */
 .btn-outline {
-    background-color: transparent;
-    border: 2px solid var(--primary);
-    color: var(--primary);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-outline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.btn-outline:hover::before {
+    opacity: 1;
 }
 
 .btn-outline:hover {
-    background-color: var(--primary);
-    color: white;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+}
+
+/* Fallback para navegadores que não suportam backdrop-filter */
+@supports not (backdrop-filter: blur(15px)) {
+    .btn-outline {
+        background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .btn-outline:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Responsividade para botões */
+@media (max-width: 768px) {
+    .btn-outline {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.12);
+        border: 2px solid rgba(255, 255, 255, 0.25);
+    }
+    
+    .btn-outline:hover {
+        background: rgba(255, 255, 255, 0.18);
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+}
+
+/* Animação sutil para o botão */
+.btn-outline {
+    animation: subtleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes subtleGlow {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+    }
+}
+
+/* Pausar animação no hover */
+.btn-outline:hover {
+    animation-play-state: paused;
+}
+
+/* Para usuários que preferem movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    .btn-outline {
+        animation: none !important;
+    }
 }
 
 /* Layout */
@@ -1391,213 +1467,6 @@ header.scrolled {
         color: white !important;
     }
 }
-
-/* Footer Styles - Moved to footer.css */
-/*
-footer {
-    background: linear-gradient(135deg, var(--dark) 0%, #424242 100%);
-    color: white;
-    padding: 4rem 0 2rem;
-    position: relative;
-    overflow: hidden;
-    margin-top: 5rem;
-}
-
-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: repeating-linear-gradient(
-        45deg,
-        rgba(211, 47, 47, 0.05),
-        rgba(211, 47, 47, 0.05) 1px,
-        transparent 1px,
-        transparent 15px
-    );
-    opacity: 0.3;
-    pointer-events: none;
-}
-
-.footer-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 3rem;
-    position: relative;
-    z-index: 1;
-}
-
-.footer-about {
-    max-width: 400px;
-}
-
-.footer-logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 1.5rem;
-    display: inline-block;
-    position: relative;
-    transition: var(--transition);
-}
-
-.footer-logo::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
-    border-radius: 2px;
-    transition: width 0.3s ease;
-}
-
-.footer-logo:hover::after {
-    width: 100%;
-}
-
-.footer-about p {
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.7;
-    margin-bottom: 2rem;
-    font-size: 1rem;
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.social-link {
-    width: 45px;
-    height: 45px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.1rem;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-
-.social-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
-
-.social-link:hover::before {
-    transform: translateX(100%);
-}
-
-.social-link:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(211, 47, 47, 0.4);
-}
-
-.footer-links {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-links h3 {
-    color: white;
-    font-size: 1.3rem;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    position: relative;
-    padding-bottom: 0.5rem;
-}
-
-.footer-links h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 30px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
-    border-radius: 1px;
-}
-
-.footer-links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-links li {
-    margin-bottom: 0.8rem;
-}
-
-.footer-links a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-    padding-left: 1rem;
-    font-size: 0.95rem;
-}
-
-.footer-links a::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--primary);
-    opacity: 0;
-    transform: translateX(-10px);
-    transition: all 0.3s ease;
-}
-
-.footer-links a:hover::before {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.footer-links a:hover {
-    color: white;
-    padding-left: 1.5rem;
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 2rem;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-
-.footer-bottom p {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin: 0;
-}
-
-.footer-bottom a {
-    color: rgba(255, 255, 255, 0.7);
-    transition: color 0.3s ease;
-}
-
-.footer-bottom a:hover {
-    color: var(--primary);
-}
-*/
 
 /* Skip Link Styles */
 .skip-link {

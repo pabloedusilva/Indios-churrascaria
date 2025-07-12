@@ -90,6 +90,41 @@
     color: var(--primary) !important;
 }
 
+/* Navbar Transparent States */
+.navbar-header.hero-active {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar-header.hero-active .navbar-brand {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-20px) !important;
+    transition: all 0.3s ease;
+}
+
+.navbar-header.hero-active .nav-link {
+    color: white !important;
+    font-weight: 600;
+}
+
+.navbar-header.hero-active .nav-link:hover {
+    color: var(--primary) !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.navbar-header.hero-active .nav-link.active {
+    color: var(--primary) !important;
+    background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.navbar-header.hero-active .navbar-toggler .toggler-icon span {
+    background-color: white !important;
+}
+
 /* Brand / Logo */
 .navbar-brand {
     display: flex;
