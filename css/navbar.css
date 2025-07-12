@@ -212,10 +212,6 @@
 }
 
 /* Call to Action Button */
-.navbar-cta {
-    margin-left: 1rem;
-}
-
 .cta-btn {
     display: flex;
     align-items: center;
@@ -308,26 +304,6 @@
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Navbar CTA - Carrinho */
-.navbar-cta {
-    display: flex;
-    align-items: center;
-    margin-left: 1rem;
-}
-
-.cart-toggle {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-}
-
-.cart-count {
-    width: 16px;
-    height: 16px;
-    font-size: 0.65rem;
-    line-height: 1;
-}
-
 /* Responsive Styles */
 @media (max-width: 992px) {
     .navbar-collapse {
@@ -375,14 +351,6 @@
         transform: translateX(-50%);
         z-index: 100;
         max-width: 120px;
-    }
-    
-    .navbar-cta {
-        order: 3;
-        z-index: 100;
-        flex-shrink: 0;
-        margin-left: auto;
-        margin-right: 0.25rem;
     }
     
     .navbar-collapse {
@@ -443,13 +411,6 @@
     .nav-link.active {
         background-color: rgba(229, 57, 53, 0.08);
         transform: none;
-    }
-    
-    .navbar-cta {
-        margin-left: 0;
-        width: 100%;
-        display: flex;
-        justify-content: center;
     }
     
     .cta-btn {
@@ -573,13 +534,6 @@
     
     .navbar-collapse.show .nav-item:nth-child(4) {
         animation-delay: 0.4s;
-    }
-    
-    .navbar-collapse.show .navbar-cta {
-        animation: navItemFade 0.4s ease forwards;
-        animation-delay: 0.5s;
-        opacity: 0;
-        transform: translateY(20px);
     }
 }
 

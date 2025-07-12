@@ -429,3 +429,48 @@
         padding: 1rem;
     }
 }
+
+/* Carrinho Flutuante - Substituindo o back-to-top */
+.cart-toggle.floating-cart {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    z-index: 1000;
+    box-shadow: 0 8px 25px rgba(229, 57, 53, 0.3);
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    transition: all 0.3s ease;
+}
+
+.cart-toggle.floating-cart:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(229, 57, 53, 0.4);
+}
+
+.cart-toggle.floating-cart .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: white;
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--primary);
+    transition: all 0.3s ease;
+}
+
+.cart-toggle.floating-cart[data-count="0"] .cart-count {
+    opacity: 0;
+    transform: scale(0);
+}

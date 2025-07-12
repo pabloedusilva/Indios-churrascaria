@@ -2,7 +2,6 @@
 const loader = document.querySelector('.loader');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const menuItems = document.querySelectorAll('.menu-item');
-const backToTopBtn = document.getElementById('backToTop');
 const galleryItems = document.querySelectorAll('.gallery-item');
 
 // Loader
@@ -55,16 +54,6 @@ document.addEventListener('DOMContentLoaded', ensureVideoAutoplay);
 
 // Executar também quando a página estiver completamente carregada
 window.addEventListener('load', ensureVideoAutoplay);
-
-// Back to top button scroll effect
-window.addEventListener('scroll', () => {
-    // Back to top button
-    if (window.scrollY > 500) {
-        backToTopBtn.classList.add('active');
-    } else {
-        backToTopBtn.classList.remove('active');
-    }
-});
 
 // Smooth scroll para links internos
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
