@@ -1392,7 +1392,8 @@ header.scrolled {
     }
 }
 
-/* Footer Styles */
+/* Footer Styles - Moved to footer.css */
+/*
 footer {
     background: linear-gradient(135deg, var(--dark) 0%, #424242 100%);
     color: white;
@@ -1596,6 +1597,7 @@ footer::before {
 .footer-bottom a:hover {
     color: var(--primary);
 }
+*/
 
 /* Skip Link Styles */
 .skip-link {
@@ -1696,7 +1698,8 @@ footer::before {
     opacity: 1;
 }
 
-/* Footer Responsive */
+/* Footer Responsive - Moved to footer.css */
+/*
 @media (max-width: 768px) {
     footer {
         padding: 3rem 0 1.5rem;
@@ -1760,6 +1763,7 @@ footer::before {
         font-size: 0.8rem;
     }
 }
+*/
 
 /* Print Styles */
 @media print {

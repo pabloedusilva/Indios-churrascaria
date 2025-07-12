@@ -21,24 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card);
     });
 
-    // Observar banner CTA
-    const ctaBanner = document.querySelector('.cta-banner');
-    if (ctaBanner) {
-        observer.observe(ctaBanner);
-    }
-
-    // Efeito de hover nos hashtags
-    const hashtags = document.querySelectorAll('.hashtag');
-    hashtags.forEach(hashtag => {
-        hashtag.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.05) rotate(2deg)';
-        });
-        
-        hashtag.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1) rotate(0deg)';
-        });
-    });
-
     // Animação de click nos botões de rede social
     const socialButtons = document.querySelectorAll('.btn-instagram, .btn-whatsapp');
     socialButtons.forEach(button => {
@@ -124,17 +106,6 @@ style.textContent = `
         transform: translateY(0);
     }
     
-    .cta-banner {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s ease-out;
-    }
-    
-    .cta-banner.animate-in {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
     .feature-item {
         opacity: 0;
         transform: translateX(-20px);
@@ -148,10 +119,6 @@ style.textContent = `
         }
     }
     
-    .hashtag {
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-    
     /* Melhorias de acessibilidade */
     .btn-instagram:focus,
     .btn-whatsapp:focus {
@@ -161,7 +128,6 @@ style.textContent = `
     
     @media (prefers-reduced-motion: reduce) {
         .social-card,
-        .cta-banner,
         .feature-item {
             animation: none !important;
             transition: none !important;

@@ -52,10 +52,12 @@
         padding: 35px;
     }
     
-    /* Footer */
+    /* Footer - Moved to footer.css */
+    /*
     .footer-container {
         grid-template-columns: repeat(2, 1fr);
     }
+    */
 }
 
 /* Estilos para dispositivos móveis */
@@ -281,24 +283,8 @@
         font-size: 1rem;
     }
     
-    .cta-banner {
-        padding: 25px 15px;
-    }
-    
-    .cta-banner h3 {
-        font-size: 1.4rem;
-    }
-    
-    .cta-banner p {
-        font-size: 1rem;
-    }
-    
-    .hashtag {
-        font-size: 0.8rem;
-        padding: 6px 12px;
-    }
-    
-    /* Footer */
+    /* Footer - Moved to footer.css */
+    /*
     .footer-container {
         grid-template-columns: 1fr;
     }
@@ -307,6 +293,7 @@
         width: 32px;
         height: 32px;
     }
+    */
 }
 
 /* Animações para mobile */
