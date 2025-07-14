@@ -3,6 +3,7 @@ const loader = document.querySelector('.loader');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const menuItems = document.querySelectorAll('.menu-item');
 const galleryItems = document.querySelectorAll('.gallery-item');
+const backToTopBtn = document.querySelector('.back-to-top') || document.createElement('div'); // Fallback para evitar erro
 
 // Loader
 window.addEventListener('load', () => {
@@ -69,30 +70,133 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Menu filter functionality
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterBtns.forEach(b => b.classList.remove('active'));
-        // Add active class to clicked button
-        btn.classList.add('active');
+// Menu filter functionality - Corrigido
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const menuItems = document.querySelectorAll('.menu-item');
+    
+    // Verificar se os elementos existem
+    if (filterBtns.length === 0) {
+        console.warn('Nenhum botão de filtro encontrado');
+        return;
+    }
+    
+    if (menuItems.length === 0) {
+        console.warn('Nenhum item de menu encontrado');
+        return;
+    }
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
 
-        const filterValue = btn.getAttribute('data-filter');
+            const filterValue = this.getAttribute('data-filter');
 
-        // Filter menu items
-        menuItems.forEach(item => {
-            const category = item.getAttribute('data-category');
-            if (filterValue === 'all' || category === filterValue) {
-                item.style.display = 'block';
-                // Animação de entrada
-                item.style.animation = 'none';
-                item.offsetHeight; // Trigger reflow
-                item.style.animation = 'fadeInUp 0.5s ease-out';
-            } else {
-                item.style.display = 'none';
-            }
+            // Filter menu items
+            menuItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+                if (filterValue === 'all' || category === filterValue) {
+                    item.style.display = 'block';
+                    // Animação de entrada
+                    item.style.animation = 'none';
+                    item.offsetHeight; // Trigger reflow
+                    item.style.animation = 'fadeInUp 0.5s ease-out';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         });
     });
+});
+
+// Funcionalidade de scroll suave para os filtros - Melhorado
+document.addEventListener('DOMContentLoaded', function() {
+    const menuFilters = document.querySelector('.menu-filters');
+    
+    if (menuFilters) {
+        // Adicionar funcionalidade de drag scroll para desktop
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        
+        // Mouse events para desktop
+        menuFilters.addEventListener('mousedown', (e) => {
+            isDown = true;
+            menuFilters.style.cursor = 'grabbing';
+            startX = e.pageX - menuFilters.offsetLeft;
+            scrollLeft = menuFilters.scrollLeft;
+            e.preventDefault(); // Prevenir seleção de texto
+        });
+        
+        menuFilters.addEventListener('mouseleave', () => {
+            isDown = false;
+            menuFilters.style.cursor = 'grab';
+        });
+        
+        menuFilters.addEventListener('mouseup', () => {
+            isDown = false;
+            menuFilters.style.cursor = 'grab';
+        });
+        
+        menuFilters.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - menuFilters.offsetLeft;
+            const walk = (x - startX) * 2; // Velocidade do scroll
+            menuFilters.scrollLeft = scrollLeft - walk;
+        });
+        
+        // Touch events para dispositivos móveis
+        let touchStartX = 0;
+        let touchScrollLeft = 0;
+        
+        menuFilters.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchScrollLeft = menuFilters.scrollLeft;
+        }, { passive: true });
+        
+        menuFilters.addEventListener('touchmove', (e) => {
+            if (!touchStartX) return;
+            
+            const touchX = e.touches[0].clientX;
+            const walk = (touchStartX - touchX) * 1.5; // Velocidade do scroll
+            menuFilters.scrollLeft = touchScrollLeft + walk;
+        }, { passive: true });
+        
+        menuFilters.addEventListener('touchend', () => {
+            touchStartX = 0;
+        }, { passive: true });
+        
+        // Adicionar cursor de grab apenas para desktop
+        if (window.matchMedia('(hover: hover)').matches) {
+            menuFilters.style.cursor = 'grab';
+        }
+        
+        // Função para verificar se há overflow e mostrar/esconder gradientes
+        function updateScrollIndicators() {
+            const isScrollable = menuFilters.scrollWidth > menuFilters.clientWidth;
+            const isAtStart = menuFilters.scrollLeft <= 5;
+            const isAtEnd = menuFilters.scrollLeft >= menuFilters.scrollWidth - menuFilters.clientWidth - 5;
+            
+            if (isScrollable) {
+                menuFilters.style.setProperty('--show-left-gradient', isAtStart ? '0' : '1');
+                menuFilters.style.setProperty('--show-right-gradient', isAtEnd ? '0' : '1');
+            } else {
+                menuFilters.style.setProperty('--show-left-gradient', '0');
+                menuFilters.style.setProperty('--show-right-gradient', '0');
+            }
+        }
+        
+        // Verificar indicadores no scroll
+        menuFilters.addEventListener('scroll', updateScrollIndicators);
+        
+        // Verificar inicialmente e no resize
+        updateScrollIndicators();
+        window.addEventListener('resize', updateScrollIndicators);
+    }
 });
 
 // Back to top functionality
