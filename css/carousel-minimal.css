@@ -1,0 +1,560 @@
+/* ==========================================
+   MINIMAL CAROUSEL STYLES
+   ========================================== */
+
+/* Modern Carousel Container */
+.modern-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Carousel Wrapper */
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+}
+
+/* Contador de Slides */
+.slide-counter {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 15;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.slide-counter .current-slide {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.slide-counter .total-slides {
+    opacity: 0.8;
+}
+
+/* Barra de Progresso Interativa */
+.progress-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 12;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    width: 0%;
+    position: relative;
+    border-radius: 0 2px 2px 0;
+    box-shadow: 0 0 10px rgba(211, 47, 47, 0.4);
+}
+
+.progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.3) 50%, 
+        transparent 100%);
+    animation: progressPulse 2s ease-in-out infinite;
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.6), 
+        rgba(255, 255, 255, 0.8));
+    border-radius: 0 2px 2px 0;
+    opacity: 0.8;
+}
+
+@keyframes progressPulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Estado da barra quando pausada */
+.progress-container.paused .progress-bar {
+    opacity: 0.5;
+    background: linear-gradient(90deg, #666, #999);
+}
+
+.progress-container.paused .progress-bar::before {
+    animation: none;
+}
+
+/* Hover effect no container de progresso */
+.progress-container:hover {
+    height: 6px;
+    cursor: pointer;
+}
+
+.progress-container:hover .progress-bar {
+    box-shadow: 0 0 15px rgba(211, 47, 47, 0.6);
+}
+
+/* Slides Container */
+.carousel-slides-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.carousel-slides {
+    display: flex;
+    width: 500%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Individual Slide */
+.slide {
+    width: 20%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.slide.active .slide-image img {
+    transform: scale(1.05);
+}
+
+/* Navigation Controls */
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--primary);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    pointer-events: all;
+    backdrop-filter: blur(10px);
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+/* Dots Navigation */
+.dots-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+
+.dot.active {
+    background: var(--primary);
+    box-shadow: 0 0 10px rgba(211, 47, 47, 0.5);
+    transform: scale(1.3);
+}
+
+/* Smooth transitions */
+.slide-image img,
+.nav-btn,
+.dot {
+    will-change: transform;
+}
+
+/* Loading State */
+.carousel-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(211, 47, 47, 0.3);
+    border-top: 3px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .modern-carousel {
+        margin: 1.5rem auto;
+        max-width: 95%;
+    }
+    
+    .carousel-wrapper {
+        height: 400px;
+    }
+    
+    .slide-counter {
+        top: 15px;
+        right: 15px;
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    .nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+    }
+    
+    .prev-btn {
+        left: 15px;
+    }
+    
+    .next-btn {
+        right: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .modern-carousel {
+        margin: 1rem;
+        border-radius: 12px;
+        max-width: 95%;
+    }
+    
+    .carousel-wrapper {
+        height: 320px;
+    }
+    
+    .slide-counter {
+        top: 12px;
+        right: 12px;
+        padding: 5px 10px;
+        font-size: 12px;
+        border-radius: 15px;
+    }
+    
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+    
+    .prev-btn {
+        left: 10px;
+    }
+    
+    .next-btn {
+        right: 10px;
+    }
+    
+    .dots-container {
+        bottom: 15px;
+        gap: 8px;
+    }
+    
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modern-carousel {
+        margin: 0.5rem auto;
+        border-radius: 10px;
+        max-width: 98%;
+    }
+    
+    .carousel-wrapper {
+        height: 250px;
+    }
+    
+    .slide-counter {
+        top: 10px;
+        right: 10px;
+        padding: 4px 8px;
+        font-size: 11px;
+        gap: 4px;
+    }
+    
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 12px;
+    }
+    
+    .prev-btn {
+        left: 8px;
+    }
+    
+    .next-btn {
+        right: 8px;
+    }
+    
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .dots-container {
+        bottom: 12px;
+        gap: 6px;
+    }
+    
+    .progress-container {
+        height: 3px;
+    }
+}
+
+@media (max-width: 360px) {
+    .modern-carousel {
+        margin: 0.25rem auto;
+        border-radius: 8px;
+    }
+    
+    .carousel-wrapper {
+        height: 180px;
+    }
+    
+    .slide-counter {
+        font-size: 10px;
+        padding: 3px 6px;
+        top: 8px;
+        right: 8px;
+        gap: 3px;
+    }
+    
+    .nav-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 10px;
+    }
+    
+    .prev-btn {
+        left: 6px;
+    }
+    
+    .next-btn {
+        right: 6px;
+    }
+    
+    .dot {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .dots-container {
+        bottom: 10px;
+        gap: 5px;
+    }
+    
+    .progress-container {
+        height: 2px;
+    }
+}
+
+/* Melhorias para orientação landscape em dispositivos móveis */
+@media (max-height: 500px) and (orientation: landscape) {
+    .carousel-wrapper {
+        height: 200px;
+    }
+    
+    .slide-counter {
+        top: 8px;
+        right: 8px;
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+    
+    .nav-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 11px;
+    }
+    
+    .dots-container {
+        bottom: 8px;
+    }
+}
+
+/* Otimizações para performance em dispositivos móveis */
+@media (max-width: 768px) {
+    .slide-image img {
+        transform: none;
+        transition: none;
+    }
+    
+    .slide.active .slide-image img {
+        transform: none;
+    }
+    
+    .modern-carousel {
+        animation: none;
+    }
+}
+
+/* Para dispositivos com preferência por movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    .progress-bar,
+    .progress-bar::after,
+    .modern-carousel,
+    .slide-image img,
+    .nav-btn,
+    .dot {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .carousel-slides {
+        transition: transform 0.3s ease !important;
+    }
+}
+
+/* Touch feedback for mobile */
+@media (pointer: coarse) {
+    .nav-btn:active {
+        transform: translateY(-50%) scale(0.95);
+    }
+    
+    .dot:active {
+        transform: scale(0.9);
+    }
+}
+
+/* Subtle entrance animation */
+.modern-carousel {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Focus states for accessibility */
+.nav-btn:focus,
+.dot:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Subtle slide change effect */
+.slide {
+    transition: opacity 0.6s ease;
+}
+
+.slide:not(.active) {
+    opacity: 0;
+}
+
+.slide.active {
+    opacity: 1;
+}

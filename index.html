@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/social-contact.css">
         <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="css/carousel-minimal.css">
         <link rel="stylesheet" href="css/notification.css">
         <style>
             /* Critical CSS for fast mobile loading */
@@ -494,149 +495,91 @@
                 <h2 class="section-title">Nossa Galeria</h2>
                 <p class="text-center">Veja nossos deliciosos pratos</p>
 
-                <!-- Carousel Premium -->
-                <div class="carousel-container">
-                    <div class="carousel-track" id="carouselTrack">
-                        <div class="carousel-slide active">
-                            <img
-                                src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                                alt="Espetinhos grelhados na churrasqueira com tempero especial">
-                            <div class="slide-info">
-                                <h3>Espetinhos na Brasa</h3>
-                                <p>Nossos espetinhos grelhados no ponto
-                                    perfeito, com tempero especial da casa</p>
-                            </div>
-                        </div>
-                        <div class="carousel-slide">
-                            <img
-                                src="https://images.unsplash.com/photo-1606755456206-b25206bfa233?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                                alt="Ambiente acolhedor do restaurante com decoração rústica">
-                            <div class="slide-info">
-                                <h3>Ambiente Acolhedor</h3>
-                                <p>Um espaço perfeito para desfrutar de uma
-                                    refeição em família ou com amigos</p>
-                            </div>
-                        </div>
-                        <div class="carousel-slide">
-                            <img
-                                src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                                alt="Porções generosas de batata frita e acompanhamentos">
-                            <div class="slide-info">
-                                <h3>Porções Generosas</h3>
-                                <p>Acompanhamentos deliciosos para compartilhar
-                                    com a família toda</p>
-                            </div>
-                        </div>
-                        <div class="carousel-slide">
-                            <img
-                                src="https://images.unsplash.com/photo-1606755962773-dff5c40bddf1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                                alt="Mesa preparada para eventos especiais">
-                            <div class="slide-info">
-                                <h3>Eventos Especiais</h3>
-                                <p>Preparamos seu evento com todo carinho e
-                                    dedicação</p>
-                            </div>
-                        </div>
-                        <div class="carousel-slide">
-                            <img
-                                src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                                alt="Equipe de chefs especializados preparando espetinhos">
-                            <div class="slide-info">
-                                <h3>Equipe Especializada</h3>
-                                <p>Chefs experientes garantem a qualidade e
-                                    sabor em cada espetinho</p>
-                            </div>
-                        </div>
-                        <div class="carousel-slide">
-                            <img
-                                src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                                alt="Clientes satisfeitos aproveitando a refeição">
-                            <div class="slide-info">
-                                <h3>Satisfação Garantida</h3>
-                                <p>A felicidade dos nossos clientes é nossa
-                                    maior recompensa</p>
-                            </div>
-                        </div>
+                <!-- Carousel Premium Moderno -->
+                <div class="modern-carousel" id="modernCarousel">
+                    <!-- Loading Placeholder -->
+                    <div class="carousel-loading" id="carouselLoading">
+                        <div class="loading-spinner"></div>
                     </div>
 
-                    <!-- Navegação Premium -->
-                    <button class="carousel-nav prev" id="carouselPrev"
-                        aria-label="Imagem anterior">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="carousel-nav next" id="carouselNext"
-                        aria-label="Próxima imagem">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                    <!-- Carousel Container -->
+                    <div class="carousel-wrapper">
+                        <!-- Contador de Slides -->
+                        <div class="slide-counter" id="slideCounter">
+                            <span class="current-slide">1</span>
+                            <span>/</span>
+                            <span class="total-slides">5</span>
+                        </div>
 
-                    <!-- Indicadores Premium -->
-                    <div class="carousel-indicators" id="carouselIndicators">
-                        <button class="indicator active" data-slide="0"
-                            aria-label="Ir para imagem 1"></button>
-                        <button class="indicator" data-slide="1"
-                            aria-label="Ir para imagem 2"></button>
-                        <button class="indicator" data-slide="2"
-                            aria-label="Ir para imagem 3"></button>
-                        <button class="indicator" data-slide="3"
-                            aria-label="Ir para imagem 4"></button>
-                        <button class="indicator" data-slide="4"
-                            aria-label="Ir para imagem 5"></button>
-                        <button class="indicator" data-slide="5"
-                            aria-label="Ir para imagem 6"></button>
-                    </div>
+                        <!-- Main Slider -->
+                        <div class="carousel-slides-container">
+                            <div class="carousel-slides" id="carouselSlides">
+                                <div class="slide active" data-index="0">
+                                    <div class="slide-image">
+                                        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=90"
+                                             alt="Espetinhos grelhados"
+                                             loading="lazy">
+                                    </div>
+                                </div>
+                                
+                                <div class="slide" data-index="1">
+                                    <div class="slide-image">
+                                        <img src="https://images.unsplash.com/photo-1606755456206-b25206bfa233?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=90"
+                                             alt="Ambiente do restaurante"
+                                             loading="lazy">
+                                    </div>
+                                </div>
+                                
+                                <div class="slide" data-index="2">
+                                    <div class="slide-image">
+                                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=90"
+                                             alt="Porções e acompanhamentos"
+                                             loading="lazy">
+                                    </div>
+                                </div>
+                                
+                                <div class="slide" data-index="3">
+                                    <div class="slide-image">
+                                        <img src="https://images.unsplash.com/photo-1606755962773-dff5c40bddf1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=90"
+                                             alt="Mesa para eventos"
+                                             loading="lazy">
+                                    </div>
+                                </div>
+                                
+                                <div class="slide" data-index="4">
+                                    <div class="slide-image">
+                                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=90"
+                                             alt="Equipe preparando"
+                                             loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <!-- Indicador de Slide -->
-                    <div class="carousel-slide-indicator"
-                        id="carouselSlideIndicator">
-                        <span id="currentSlideNumber">1</span> / <span
-                            id="totalSlidesNumber">6</span>
-                    </div>
+                        <!-- Navigation Controls -->
+                        <div class="carousel-controls">
+                            <button class="nav-btn prev-btn" id="prevBtn" aria-label="Slide anterior">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="nav-btn next-btn" id="nextBtn" aria-label="Próximo slide">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
 
-                    <!-- Barra de Progresso -->
-                    <div class="carousel-progress" id="carouselProgress"></div>
-                </div>
+                        <!-- Dots Indicator -->
+                        <div class="dots-container" id="dotsContainer">
+                            <button class="dot active" data-slide="0" aria-label="Slide 1"></button>
+                            <button class="dot" data-slide="1" aria-label="Slide 2"></button>
+                            <button class="dot" data-slide="2" aria-label="Slide 3"></button>
+                            <button class="dot" data-slide="3" aria-label="Slide 4"></button>
+                            <button class="dot" data-slide="4" aria-label="Slide 5"></button>
+                        </div>
 
-                <!-- Thumbnail Navigation -->
-                <div class="carousel-thumbnails" id="carouselThumbnails">
-                    <div class="carousel-thumbnail active" data-slide="0">
-                        <img
-                            src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
-                            alt="Espetinhos na brasa">
+                        <!-- Barra de Progresso Interativa -->
+                        <div class="progress-container" id="progressContainer">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
                     </div>
-                    <div class="carousel-thumbnail" data-slide="1">
-                        <img
-                            src="https://images.unsplash.com/photo-1606755456206-b25206bfa233?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
-                            alt="Ambiente acolhedor">
-                    </div>
-                    <div class="carousel-thumbnail" data-slide="2">
-                        <img
-                            src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
-                            alt="Porções generosas">
-                    </div>
-                    <div class="carousel-thumbnail" data-slide="3">
-                        <img
-                            src="https://images.unsplash.com/photo-1606755962773-dff5c40bddf1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
-                            alt="Eventos especiais">
-                    </div>
-                    <div class="carousel-thumbnail" data-slide="4">
-                        <img
-                            src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
-                            alt="Equipe especializada">
-                    </div>
-                    <div class="carousel-thumbnail" data-slide="5">
-                        <img
-                            src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80"
-                            alt="Clientes satisfeitos">
-                    </div>
-                </div>
-
-                <!-- Modal de Imagem -->
-                <div class="image-modal" id="imageModal">
-                    <img id="modalImage" src alt>
-                    <button class="close-modal" id="closeImageModal"
-                        aria-label="Fechar imagem">
-                        <i class="fas fa-times"></i>
-                    </button>
                 </div>
             </div>
         </section>
@@ -733,7 +676,7 @@
 
         <!-- JavaScript -->
         <script src="js/navbar.js"></script>
-        <script src="js/index.js"></script>
+        <script src="js/carousel-minimal.js"></script>
         <script src="js/notification-script.js"></script>
         <script src="js/cart.js"></script>
         <script src="js/social-contact.js"></script>
