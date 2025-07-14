@@ -487,7 +487,7 @@ FIM DO COMENTÁRIO CAROUSEL COMPLEXO */
 
 .menu-filters {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 1rem;
     margin-bottom: 4rem;
@@ -506,11 +506,23 @@ FIM DO COMENTÁRIO CAROUSEL COMPLEXO */
     scroll-snap-type: x mandatory;
     /* Garantir que os itens não quebrem */
     flex-wrap: nowrap;
+    /* Altura fixa para alinhamento */
+    min-height: 60px;
+    /* Scroll suave em dispositivos móveis */
+    scroll-padding: 0 1rem;
 }
 
-/* Ocultar scrollbar para WebKit */
+/* Ocultar scrollbar para WebKit (Chrome, Safari) */
 .menu-filters::-webkit-scrollbar {
     display: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+}
+
+/* Ocultar scrollbar no Firefox */
+.menu-filters {
+    scrollbar-width: none;
 }
 
 /* Gradiente sutil nas bordas para indicar scroll */
@@ -560,6 +572,13 @@ FIM DO COMENTÁRIO CAROUSEL COMPLEXO */
     min-width: fit-content;
     /* Evitar quebra de linha */
     word-break: keep-all;
+    /* Altura fixa para alinhamento */
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Garantir que todos tenham a mesma altura */
+    box-sizing: border-box;
 }
 
 .filter-btn::before {
@@ -2158,9 +2177,28 @@ FIM DO COMENTÁRIO CAROUSEL COMPLEXO */
 .menu-filters {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
     gap: 1rem;
     margin-bottom: 4rem;
+    padding: 1rem 2rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    scroll-behavior: smooth;
+    position: relative;
+    --show-left-gradient: 0;
+    --show-right-gradient: 1;
+    /* Melhorar o scroll no mobile */
+    scroll-snap-type: x mandatory;
+    /* Garantir que os itens não quebrem */
+    flex-wrap: nowrap;
+    /* Altura fixa para alinhamento */
+    min-height: 60px;
+    /* Scroll suave em dispositivos móveis */
+    scroll-padding: 0 1rem;
 }
 
 /* Advanced Button Styles */
