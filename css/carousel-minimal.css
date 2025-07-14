@@ -222,6 +222,10 @@
     display: flex;
     gap: 12px;
     z-index: 10;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
 }
 
 .dot {
@@ -233,6 +237,8 @@
     cursor: pointer;
     transition: all 0.3s ease;
     backdrop-filter: blur(5px);
+    min-width: 12px;
+    flex-shrink: 0;
 }
 
 .dot:hover {
@@ -314,6 +320,26 @@
     .next-btn {
         right: 15px;
     }
+    
+    .dots-container {
+        bottom: 18px;
+        gap: 10px;
+        padding: 6px 14px;
+    }
+    
+    .dot {
+        width: 11px;
+        height: 11px;
+        min-width: 11px;
+    }
+    
+    .dot:hover {
+        transform: scale(1.15);
+    }
+    
+    .dot.active {
+        transform: scale(1.25);
+    }
 }
 
 @media (max-width: 768px) {
@@ -352,11 +378,22 @@
     .dots-container {
         bottom: 15px;
         gap: 8px;
+        padding: 5px 12px;
+        border-radius: 16px;
     }
     
     .dot {
         width: 10px;
         height: 10px;
+        min-width: 10px;
+    }
+    
+    .dot:hover {
+        transform: scale(1.1);
+    }
+    
+    .dot.active {
+        transform: scale(1.2);
     }
 }
 
@@ -396,11 +433,23 @@
     .dot {
         width: 8px;
         height: 8px;
+        min-width: 8px;
     }
     
     .dots-container {
         bottom: 12px;
         gap: 6px;
+        padding: 4px 10px;
+        border-radius: 14px;
+    }
+    
+    .dot:hover {
+        transform: scale(1.1);
+    }
+    
+    .dot.active {
+        transform: scale(1.15);
+        box-shadow: 0 0 8px rgba(211, 47, 47, 0.6);
     }
     
     .progress-container {
@@ -443,11 +492,83 @@
     .dot {
         width: 6px;
         height: 6px;
+        min-width: 6px;
     }
     
     .dots-container {
         bottom: 10px;
-        gap: 5px;
+        gap: 4px;
+        padding: 3px 8px;
+        border-radius: 12px;
+    }
+    
+    .dot:hover {
+        transform: scale(1.1);
+    }
+    
+    .dot.active {
+        transform: scale(1.1);
+        box-shadow: 0 0 6px rgba(211, 47, 47, 0.7);
+    }
+    
+    .progress-container {
+        height: 2px;
+    }
+}
+
+/* Para dispositivos muito pequenos */
+@media (max-width: 320px) {
+    .modern-carousel {
+        margin: 0.125rem auto;
+        border-radius: 6px;
+    }
+    
+    .carousel-wrapper {
+        height: 160px;
+    }
+    
+    .slide-counter {
+        font-size: 9px;
+        padding: 2px 5px;
+        top: 6px;
+        right: 6px;
+        gap: 2px;
+    }
+    
+    .nav-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 9px;
+    }
+    
+    .prev-btn {
+        left: 4px;
+    }
+    
+    .next-btn {
+        right: 4px;
+    }
+    
+    .dot {
+        width: 5px;
+        height: 5px;
+        min-width: 5px;
+    }
+    
+    .dots-container {
+        bottom: 8px;
+        gap: 3px;
+        padding: 2px 6px;
+        border-radius: 10px;
+    }
+    
+    .dot:hover {
+        transform: scale(1.05);
+    }
+    
+    .dot.active {
+        transform: scale(1.05);
+        box-shadow: 0 0 4px rgba(211, 47, 47, 0.8);
     }
     
     .progress-container {
@@ -519,7 +640,27 @@
     }
     
     .dot:active {
+        transform: scale(0.8);
+        background: var(--primary);
+    }
+    
+    .dot.active:active {
         transform: scale(0.9);
+    }
+    
+    /* Aumentar área de toque das bolinhas em dispositivos touch */
+    .dot {
+        position: relative;
+    }
+    
+    .dot::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
+        border-radius: 50%;
     }
 }
 

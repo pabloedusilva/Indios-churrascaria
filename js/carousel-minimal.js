@@ -2,7 +2,7 @@
 // MINIMAL CAROUSEL FUNCTIONALITY
 // ==========================================
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Carousel Elements
     const carousel = document.querySelector('.modern-carousel');
     const slidesContainer = document.querySelector('.carousel-slides');
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const clickX = e.clientX - rect.left;
                 const clickPercent = (clickX / rect.width) * 100;
                 const targetSlide = Math.floor((clickPercent / 100) * totalSlides);
-                
+
                 if (targetSlide >= 0 && targetSlide < totalSlides && targetSlide !== currentSlide) {
                     stopAutoplay();
                     goToSlide(targetSlide);
@@ -135,13 +135,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update progress bar com animação em tempo real
     function updateProgressBar() {
         if (!progressBar || !isAutoplayActive()) return;
-        
+
         const elapsed = Date.now() - progressStartTime;
         const progress = Math.min((elapsed / autoplayDuration) * 100, 100);
-        
+
         progressBar.style.transition = 'none';
         progressBar.style.width = `${progress}%`;
-        
+
         // Se chegou a 100%, o slide mudará automaticamente
         if (progress >= 100) {
             stopProgressAnimation();
@@ -151,11 +151,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Iniciar animação da barra de progresso
     function startProgressAnimation() {
         if (!progressBar) return;
-        
+
         progressStartTime = Date.now();
         progressBar.style.transition = 'none';
         progressBar.style.width = '0%';
-        
+
         // Atualizar a barra em tempo real
         progressInterval = setInterval(updateProgressBar, progressUpdateInterval);
     }
@@ -171,11 +171,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Reset progress bar para o slide atual
     function resetProgressToCurrentSlide() {
         if (!progressBar) return;
-        
+
         stopProgressAnimation();
         progressBar.style.transition = 'width 0.3s ease';
         progressBar.style.width = '0%';
-        
+
         // Iniciar nova animação após um pequeno delay
         setTimeout(() => {
             if (isAutoplayActive()) {
@@ -243,10 +243,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const deltaTime = Date.now() - startTime;
 
             // Verificar se é um swipe válido (não muito lento, horizontal)
-            if (Math.abs(deltaX) > Math.abs(deltaY) && 
-                Math.abs(deltaX) > 30 && 
+            if (Math.abs(deltaX) > Math.abs(deltaY) &&
+                Math.abs(deltaX) > 30 &&
                 deltaTime < 500) {
-                
+
                 if (deltaX > 0) {
                     nextSlide();
                 } else {
@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleKeyboard(e) {
         if (!carousel.matches(':hover')) return;
 
-        switch(e.key) {
+        switch (e.key) {
             case 'ArrowLeft':
                 e.preventDefault();
                 stopAutoplay();
@@ -298,12 +298,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Autoplay functions
     function startAutoplay() {
         if (autoplayInterval) return;
-        
+
         // Start the autoplay interval
         autoplayInterval = setInterval(() => {
             nextSlide();
         }, autoplayDuration);
-        
+
         // Start progress bar animation
         startProgressAnimation();
     }
@@ -313,10 +313,10 @@ document.addEventListener('DOMContentLoaded', function() {
             clearInterval(autoplayInterval);
             autoplayInterval = null;
         }
-        
+
         // Stop progress bar animation
         stopProgressAnimation();
-        
+
         // Manter a barra no estado atual
         if (progressBar) {
             progressBar.style.transition = 'width 0.3s ease';
@@ -340,11 +340,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Responsive handling
     function handleResize() {
         updateSlidePosition();
-        
+
         // Ajustar autoplay baseado no tamanho da tela
         const isMobile = window.innerWidth <= 768;
         const newDuration = isMobile ? 6000 : 5000; // Mais tempo em mobile
-        
+
         if (isAutoplayActive() && autoplayDuration !== newDuration) {
             stopAutoplay();
             setTimeout(() => {
@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Melhorar performance em dispositivos móveis
     function optimizeForMobile() {
         const isMobile = window.innerWidth <= 768;
-        
+
         if (isMobile) {
             // Reduzir animações em mobile
             slides.forEach(slide => {
