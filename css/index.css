@@ -583,7 +583,6 @@ FIM DO COMENTÁRIO CAROUSEL COMPLEXO */
     color: white;
     border-color: var(--primary);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(211, 47, 47, 0.3);
 }
 
 .menu-grid {
@@ -2162,7 +2161,6 @@ FIM DO COMENTÁRIO CAROUSEL COMPLEXO */
     flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 4rem;
-    padding: 0 2rem;
 }
 
 /* Advanced Button Styles */
