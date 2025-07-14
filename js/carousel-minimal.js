@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const slides = document.querySelectorAll('.slide');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
-    const dots = document.querySelectorAll('.dot');
     const loading = document.querySelector('.carousel-loading');
     const slideCounter = document.getElementById('slideCounter');
     const progressBar = document.getElementById('progressBar');
@@ -45,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Set initial state
         updateSlidePosition();
-        updateDots();
         updateActiveSlide();
         startAutoplay();
 
@@ -59,25 +57,14 @@ document.addEventListener('DOMContentLoaded', function () {
             stopAutoplay();
             nextSlide();
             setTimeout(startAutoplay, 500); // Pequeno delay antes de reiniciar
-        });
-
-        // Dots navigation
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                stopAutoplay();
-                goToSlide(index);
-                setTimeout(startAutoplay, 500); // Pequeno delay antes de reiniciar
-            });
-        });
-
-        // Progress bar click navigation
+        });        // Progress bar click navigation
         if (progressBar && progressBar.parentElement) {
             progressBar.parentElement.addEventListener('click', (e) => {
                 const rect = progressBar.parentElement.getBoundingClientRect();
                 const clickX = e.clientX - rect.left;
                 const clickPercent = (clickX / rect.width) * 100;
                 const targetSlide = Math.floor((clickPercent / 100) * totalSlides);
-
+                
                 if (targetSlide >= 0 && targetSlide < totalSlides && targetSlide !== currentSlide) {
                     stopAutoplay();
                     goToSlide(targetSlide);
@@ -115,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function () {
         currentSlide = slideIndex;
 
         updateSlidePosition();
-        updateDots();
         updateActiveSlide();
         updateSlideCounter();
         resetProgressToCurrentSlide();
@@ -207,13 +193,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateActiveSlide() {
         slides.forEach((slide, index) => {
             slide.classList.toggle('active', index === currentSlide);
-        });
-    }
-
-    // Update dots
-    function updateDots() {
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentSlide);
         });
     }
 
